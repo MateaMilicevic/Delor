@@ -16,7 +16,7 @@ session_start();
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous">
 </head>
 <body>
-		<nav id="myNavbar" class="navbar navbar-toggleable-md navbar-light bg-faded">
+		<nav id="myNavbar" class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
 		  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -55,15 +55,18 @@ session_start();
         
                 </div>
                 <div class="col-9 boja2">
-				<nav id="myNavbar" class="navbar navbar-toggleable-md navbar-light bg-faded">
+				<nav id="myNavbar" class="navbar sticky-top navbar-toggleable-md navbar-light bg-faded">
 		  			<button class="navbar-toggler navbar-toggler-center" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		    			<span class="navbar-toggler-icon"></span>
 		  			</button>
-		 			<div class="collapse navbar-collapse" id="navbarResponsive">
-		    			<ul class="navbar-nav ml-auto">
-             				<li class="nav-item option"><a class="nav-link navbar-toggler-center" href="">Novi</a></li>
-             				<li class="nav-item option"><a class="nav-link navbar-toggler-center" href="">Zaprimljeno</a></li>
-			  				<li class="nav-item option"><a class="nav-link navbar-toggler-center" href="">Prodano</a></li>
+		 			<div class="navbar-collapse collapse" >
+		    			<ul class="nav navbar-nav navbar-left">
+             				<li class="nav-item option"><a class="nav-link" href="#">Novi</a></li>
+             				<li class="nav-item option"><a class="nav-link " href="">Zaprimljeno</a></li>
+			  				<li class="nav-item option"><a class="nav-link " href="">Prodano</a></li>
+						 </ul>
+						 <ul class="nav navbar-nav navbar-toggler-right">
+             				<li class="nav-item option"><a class="nav-link" href="#">Uredi profil</a></li>
              			</ul>
 		 			</div>
 				</nav>
