@@ -54,7 +54,9 @@ session_start();
 					</div>
         
                 </div>
+			
                 <div class="col-9 boja2">
+<<<<<<< HEAD
 				<nav id="myNavbar" class="navbar sticky-top navbar-toggleable-md navbar-light bg-faded">
 		  			<button class="navbar-toggler navbar-toggler-center" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		    			<span class="navbar-toggler-icon"></span>
@@ -67,11 +69,24 @@ session_start();
 						 </ul>
 						 <ul class="nav navbar-nav navbar-toggler-right">
              				<li class="nav-item option"><a class="nav-link" href="#">Uredi profil</a></li>
+=======
+				
+				<nav id="myNavbar" class="navbar navbar-toggleable-md navbar-light bg-faded">
+		  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+		    			<span class="navbar-toggler-icon"></span>
+		  			</button>
+		 			<div class="collapse navbar-collapse" id="navbarResponsive">
+		    			<ul class="navbar-nav ml-auto">
+             				<li class="nav-item option"><a class="nav-link  " href="">Novi</a></li>
+             				<li class="nav-item option"><a class="nav-link  " href="">Zaprimljeno</a></li>
+			  				<li class="nav-item option"><a class="nav-link  " href="">Prodano</a></li>
+						    <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="urediprofil.php">Uredi profil</a></li>
+>>>>>>> 7b3d53e41bcd5e9db6ffa5d69e73c8ee71464b16
              			</ul>
 		 			</div>
 				</nav>
-        
-                </div>
+        			</div>
+               
             </div>
         
 	</div>
