@@ -1,4 +1,9 @@
 
+<?php
+if (session_id() == "session1"|| "session2")
+session_start();
+
+?>
 <!DOCTYPE>
 <html>
 <head>
@@ -34,14 +39,14 @@
        
 		    <div class="row no-gutters">
 		        <div class="col-3 boja1">
-                    <h2>Moj profil</h2>
+                    <h2><?php echo ($_SESSION["korime"])?></h2>
 					<div class="card">
   						<img src="src2/img/avatar.png" alt="Avatar" style="width:100%">
   							<div class="container">
-    							<h4><b>Ime i prezime</b></h4> 
+    							<h4><b><?php echo ($_SESSION["ime"])?> <?php echo ($_SESSION["prezime"])?></b></h4> 
    								 <p>
-									Firma<br>
-									Adresa<br>
+									<?php echo ($_SESSION["ime_firme"])?><br>
+									<?php echo ($_SESSION["adresa"]) ?><br>
 									Broj telefona
 								</p> 
 								<a id="ikona" href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></i></a>

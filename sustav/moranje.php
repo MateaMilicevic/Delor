@@ -1,3 +1,10 @@
+<?php
+if (session_id() == "session1")
+session_start();
+session_id("session2");
+session_start();
+
+?>
 <!DOCTYPE>
 <html>
 <head>
@@ -12,7 +19,8 @@
     <div class="naslov"><h1>Moj profil</h1></div>
 	<div class="kontenjer">
          <div class="okvir">
-				<form method="post" action="registriraj.php">
+				<form method="post" action="moranje.php">
+					
 					<input type="text" placeholder="Ime firme" name="ime_firme" required>
 					<input type="text" placeholder="Faks" name="faks" required>
 					<input type="text" placeholder="Adresa" name="adresa" required>
@@ -30,3 +38,32 @@
 
 </body>
 </html>
+
+<?php
+
+require 'db.php';
+
+
+
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+	if(isset($_POST['potvrda'])) {
+		$ime_firme = $_POST['ime_firme'];
+		$faks = $_POST['faks'];
+		$adresa = $_POST['adresa'];
+		$grad = $_POST['grad'];
+		$drzava = $_POST['drzava'];
+		$postanski_broj = $_POST['postanski_broj'];
+
+		$result = $mysqli->query("SELECT * FROM korisnik "  ) or die($mysqli->error());
+
+			$sql = " UPDATE korisnik SET ime_firme='$ime_firme' , faks= '$faks', adresa='$adresa', grad= '$grad', drzava= '$drzava', postanski_broj= '$postanski_broj' WHERE korisnicko_ime ='".$_SESSION['korime']."'";
+			if ($mysqli->query($sql)){
+				header("location: moj_profil.php");
+			}
+	}
+}
+$_SESSION["ime_firme"] = $ime_firme;
+$_SESSION["adresa"] = $adresa;
+
+?>

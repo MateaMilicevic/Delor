@@ -1,5 +1,6 @@
 <?php
-
+session_id("session1");
+session_start();
 require 'db.php';
 require 'session.php';
 
@@ -38,5 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	}
 }
-
+$_SESSION["korime"] = $korime;
+$_SESSION["ime"] = $ime;
+$_SESSION["prezime"] = $prezime;
 ?>
