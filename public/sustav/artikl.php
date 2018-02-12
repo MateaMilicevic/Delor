@@ -1,4 +1,3 @@
-
 <?php
 
 require 'db.php';
@@ -13,17 +12,35 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$neto_kolicina = $_POST['neto_kolicina'];
 		$cijena = $_POST['cijena'];
 		$dostupnost = $_POST['dostupnost'];
+		$tip = $_POST['tip1'];
 		$_SESSION['logged_in'] = true;
 
 		
 
 		
-			$sql = "INSERT INTO artikal (naziv, neto_kolicina, cijena, dostupnost) "
-			. "VALUES ('$naziv','$neto_kolicina','$cijena', '$dostupnost')";
+			$sql = "INSERT INTO artikal (naziv, neto_kolicina, cijena, dostupnost, tip) "
+			. "VALUES ('$naziv','$neto_kolicina','$cijena', '$dostupnost','$tip' )";
 			if ($mysqli->query($sql)){
 				header("location: profil.php");
 			}
-	}	
+	}else if(isset($_POST['potvrda2'])) {
+		
+		$naziv = $_POST['naziv'];
+		$neto_kolicina = $_POST['neto_kolicina'];
+		$cijena = $_POST['cijena'];
+		$dostupnost = $_POST['dostupnost'];
+		$tip = $_POST['tip1'];
+		$_SESSION['logged_in'] = true;
+
+		
+
+		
+			$sql = "INSERT INTO artikal (naziv, neto_kolicina, cijena, dostupnost, tip) "
+			. "VALUES ('$naziv','$neto_kolicina','$cijena', '$dostupnost','$tip' )";
+			if ($mysqli->query($sql)){
+				header("location: artikl.php");
+			}
+	}		
 
 	}
 
@@ -38,25 +55,25 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<title>Artikli</title>
-	<link rel="stylesheet" type="text/css" media="all" href="../src/css/bootstrap.min.css">
-	<link rel="stylesheet" href="src2/css/artikl.css">
+	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../src/css/artikl.css">
 </head>
 
 <body>
     <div class="pozadina">
         <div class="kontenjer">          
           <div class="naslov"><h1>Dodaj artikl</h1></div>
-            <form method="post" action="prijava.php">
+            <form method="post" action="artikl.php">
               <input type="text" placeholder="Naziv artikla" name="naziv" required><br>
 			        <input type="text" placeholder="Neto količina" name="neto_kolicina" required><br>
 			        <input type="text" placeholder="Cijena" name="cijena" required><br>
 			        <input type="text" placeholder="Dostupnost" name="dostupnost" required><br><br>
-              <label for="odab1"><h5>Kategorija:</h5></label>
-                 <select class="odabir" id="odab1">
-                    <option>Topli napitci</option>
-                    <option>Gazirana pića</option>
-                    <option>Alkoholna pića</option>
-                    <option>Negazirana pića</option>
+              <label for="tip1"><h5>Kategorija:</h5></label>
+                 <select class="tip1" id="tip1" name="tip1">
+                    <option value="Topli napitci" name="tip">Topli napitci</option>
+                    <option value="Gazirana pica" name="tip">Gazirana pića</option>
+                    <option value="Alkoholna pica" name="tip">Alkoholna pića</option>
+                    <option value="Negazirana pica" name="tip">Negazirana pića</option>
                  </select>
 				  <br>
 			  <input type="submit" value="Dodaj" name="potvrda2">

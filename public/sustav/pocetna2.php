@@ -5,8 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>DelOr</title>
-	<link rel="stylesheet" type="text/css" media="all" href="../src/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" media="all" href="src2/css/pocetna2.css">
+	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/pocetna2.css">
 </head>
 <body>
 		<nav id="myNavbar" class="navbar navbar-toggleable-md navbar-light bg-faded">
@@ -16,7 +16,7 @@
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
 		    <ul class="navbar-nav ml-auto">
 	          <li class="nav-item option"><a class="nav-link" href="">Početna</a></li>
-	          <li class="nav-item option"><a class="nav-link" href="../public/prijava/odjava.php">Odjava</a></li>
+	          <li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
              </ul>
 		  </div>
 		</nav>
@@ -53,9 +53,9 @@
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="../src/js/tether.min.js" type="text/javascript"></script>
-	<script src="../src/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="../src/js/index.js" type="text/javascript"></script>
+	<script src="../../src/js/tether.min.js" type="text/javascript"></script>
+	<script src="../../src/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../../src/js/index.js" type="text/javascript"></script>
 
 </body>
 </html>

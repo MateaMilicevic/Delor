@@ -1,7 +1,5 @@
 <?php
-if (session_id() == "session1")
-session_start();
-session_id("session2");
+
 session_start();
 
 ?>
@@ -12,8 +10,8 @@ session_start();
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Profil1</title>
-	<link rel="stylesheet" type="text/css" media="all" href="../src/css/bootstrap.min.css">
-	<link rel="stylesheet" href="src2/css/moranje.css">
+	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../src/css/moranje.css">
 </head>
 <body>
     <div class="naslov"><h1>Moj profil</h1></div>
@@ -33,8 +31,8 @@ session_start();
 			</div>
 		</div> 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="../src/js/tether.min.js" type="text/javascript"></script>
-    <script src="../src/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../src/js/tether.min.js" type="text/javascript"></script>
+    <script src="../../src/js/bootstrap.min.js" type="text/javascript"></script>
 
 </body>
 </html>
@@ -63,7 +61,4 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			}
 	}
 }
-$_SESSION["ime_firme"] = $ime_firme;
-$_SESSION["adresa"] = $adresa;
-
 ?>

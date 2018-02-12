@@ -1,6 +1,6 @@
 
 <?php
-if (session_id() == "session1"|| "session2")
+
 session_start();
 
 ?>
@@ -11,8 +11,8 @@ session_start();
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>DelOr</title>
-	<link rel="stylesheet" type="text/css" media="all" href="../src/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" media="all" href="../src/css/moj_profil.css">
+	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/moj_profil.css">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous">
 </head>
 <body>
@@ -24,9 +24,9 @@ session_start();
 		    <ul class="navbar-nav ml-auto">
 	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
               <li class="nav-item option"><a class="nav-link" href="artikl.php">Novi artikal</a></li>
-              <li class="nav-item option"><a class="nav-link" href="">Skladišta</a></li>
+              <li class="nav-item option"><a class="nav-link" href="profil.php">Skladišta</a></li>
 
-	          <li class="nav-item option"><a class="nav-link" href="../public/prijava/odjava.php">Odjava</a></li>
+	          <li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
              </ul>
 		  </div>
 		</nav>
@@ -39,15 +39,15 @@ session_start();
        
 		    <div class="row no-gutters">
 		        <div class="col-3 boja1">
-                    <h2><?php echo ($_SESSION["korime"])?></h2>
+                    <h2><?php echo ($_SESSION['korime'])?></h2>
 					<div class="card">
-  						<img src="src2/img/avatar.png" alt="Avatar" style="width:100%">
+  						<img src="../../src/img/avatar.png" alt="Avatar" style="width:100%">
   							<div class="container">
-    							<h4><b><?php echo ($_SESSION["ime"])?> <?php echo ($_SESSION["prezime"])?></b></h4> 
+    							<h4><b><?php echo ($_SESSION['ime'])?> <?php echo ($_SESSION['prezime'])?></b></h4> 
    								 <p>
-									<?php echo ($_SESSION["ime_firme"])?><br>
-									<?php echo ($_SESSION["adresa"]) ?><br>
-									Broj telefona
+									<?php echo ($_SESSION['ime_firme'])?><br>
+									<?php echo ($_SESSION['adresa']) ?><br>
+									<?php echo ($_SESSION['broj_telefona']) ?>
 								</p> 
 								<a id="ikona" href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></i></a>
   							</div>
@@ -77,9 +77,9 @@ session_start();
         
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="../src/js/tether.min.js" type="text/javascript"></script>
-	<script src="../src/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="../src/js/index.js" type="text/javascript"></script>
+	<script src="../../src/js/tether.min.js" type="text/javascript"></script>
+	<script src="../../src/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../../src/js/index.js" type="text/javascript"></script>
 
 </body>
 </html>

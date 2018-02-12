@@ -12,7 +12,7 @@ $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
 // mysql select query
 
-$query1 = "SELECT * FROM artikal";
+$query1 = "SELECT * FROM artikal WHERE tip='Alkoholna pica'";
 $query2 = "SELECT * FROM artikal WHERE naziv='coca'";
 
 // result for method one
@@ -30,8 +30,8 @@ $result2 = mysqli_query($connect, $query2);
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>DelOr</title>
-	<link rel="stylesheet" type="text/css" media="all" href="../src/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" media="all" href="../src/css/profil.css">
+	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/profil.css">
 </head>
 <body>
 		<nav id="myNavbar" class="navbar navbar-toggleable-md navbar-light bg-faded">
@@ -40,11 +40,11 @@ $result2 = mysqli_query($connect, $query2);
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
 		    <ul class="navbar-nav ml-auto">
-	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="profil.php">Moj profil</a></li>
+	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
               <li class="nav-item option"><a class="nav-link" href="dodavanje.php">Novi artikal</a></li>
-              <li class="nav-item option"><a class="nav-link" href="">Skladišta</a></li>
+              <li class="nav-item option"><a class="nav-link" href="profil.php">Skladišta</a></li>
 
-	          <li class="nav-item option"><a class="nav-link" href="../public/prijava/odjava.php">Odjava</a></li>
+	          <li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
              </ul>
 		  </div>
 		</nav>
@@ -126,9 +126,9 @@ $result2 = mysqli_query($connect, $query2);
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="../src/js/tether.min.js" type="text/javascript"></script>
-	<script src="../src/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="../src/js/index.js" type="text/javascript"></script>
+	<script src="../../src/js/tether.min.js" type="text/javascript"></script>
+	<script src="../../src/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../../src/js/index.js" type="text/javascript"></script>
 
 </body>
 </html>
