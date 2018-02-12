@@ -1,0 +1,86 @@
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    margin: 0!important;
+    padding: 0!important;
+}
+
+.row {
+  margin: 0!important;
+}
+
+#myNavbar{
+  min-height: 50px;
+  background: #22313f !important;
+  opacity: 0.8;
+  padding: 0!important;
+  transition: .5s ease;
+}
+
+.navbar-toggler{
+  outline: none !important;
+  border: none !important;
+  margin-top: 6px!important;
+}
+
+#navbarResponsive > ul {
+  min-height: 50px;
+}
+
+.nav-link {
+  color: #FFF!important;
+  cursor: pointer;
+  text-align: center;
+  line-height: 50px;
+  padding: 0 15px !important;
+}
+
+.nav-item:hover{
+  background: rgba(255, 255, 255, 0.3)!important;
+}
+
+#zaglavlje{
+    height: 50vh;
+    width: 100%;
+    background: url('../img/pice7.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 80%;
+}
+
+#iscezavanjek {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to top, transparent 0%, white 100%);
+}
+
+#glavni{
+    background-color: rgb(207,209,221);
+    min-height: 100vh;
+}
+
+#tekst p{
+    color: #22313f;
+    font-size: 18;
+    font-family: Verdana, "Geneva", Tahoma, sans-serif;
+    line-height: 30px;
+    padding: 40px;
+}
+
+.reklame {
+    max-width: 170px;
+    padding: 10px 0;
+}
+
+#reklame1{
+    min-height:100vh; 
+}
+
+#info{
+    width: 100%
+    background: black;
+    color: grey;
+}

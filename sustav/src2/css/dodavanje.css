@@ -1,0 +1,59 @@
+body
+{
+ margin: 0;
+ padding: 0;
+ background: url(../img/pice4.jpg);
+ background-size: cover;
+ font-family: sans-serif;
+}
+.kontenjer
+{
+    padding: 40px 40px;
+    width: 70%;
+    height: 600px;
+    background: #fff;
+    margin: 20px auto;
+    border: 2px solid #fff;
+    box-shadow: 0 30px 80px rgba(0,0,0,.5);
+    opacity: .9;
+    box-sizing: border-box;
+    
+}
+
+.kontenjer input
+{
+   width: 100%;
+   margin-bottom: 10px;
+}
+.kontenjer input[type="text"]:focus,
+{
+      border-bottom: 2px solid #262626;
+}
+
+.kontenjer input[type="text"],
+{
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #22313f;
+    outline: none;
+    height: 30px;
+}
+.kontenjer input
+{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.kontenjer input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    background: #262626;
+    cursor: pointer;
+}
+.kontenjer input[type="submit"]:hover
+{
+    background: #22313f
+
+}

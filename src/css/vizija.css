@@ -1,0 +1,49 @@
+body{
+    background-color:#22313f ;
+    
+}
+
+   
+
+.kontenjer{
+    width: 70%;
+    height: 300%;
+    background: #fff;
+    margin: 0 auto;
+    border: 2px solid #fff;
+    box-shadow: 0 30px 80px rgba(0,0,0,.5);
+    opacity: .85;
+    
+}
+.kontenjer h1 {
+    color: #22313f;
+    font-size: 30;
+    font-family: Verdana, "Geneva", Tahoma, sans-serif;
+    line-height: 80px;
+    padding: 40px;
+    text-align: center;
+}
+.kontenjer h2 {
+    color: #22313f;
+    font-size: 20;
+    font-family: Verdana, "Geneva", Tahoma, sans-serif;
+    line-height: 80px;
+    padding: 20px;
+    text-align: center;
+}
+.tekst p {
+    color: #22313f;
+    font-size: 16;
+    font-family: Verdana, "Geneva", Tahoma, sans-serif;
+    text-align: left;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.opis {
+    color: #22313f;
+    font-size: 16;
+    font-family: Verdana, "Geneva", Tahoma, sans-serif;
+    text-align: left;
+    margin-left: 40px;
+    margin-right: 40px;
+}

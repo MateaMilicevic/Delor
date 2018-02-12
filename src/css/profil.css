@@ -1,0 +1,172 @@
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    margin: 0!important;
+    padding: 0!important;
+}
+
+.row {
+  margin: 0!important;
+}
+
+#myNavbar{
+ 
+  min-height: 50px;
+  background: #22313f !important;
+  opacity: 0.8;
+  padding: 0!important;
+  transition: .5s ease;
+}
+
+.navbar-toggler{
+  outline: none !important;
+  border: none !important;
+  margin-top: 6px!important;
+}
+
+#navbarResponsive > ul {
+  min-height: 50px;
+}
+#myNavbar2{
+ 
+  min-height: 50px;
+  background: #22313f !important;
+  opacity: 0.8;
+  display: inline-block;
+  width: 100%;
+  padding-right: 85vh;
+  transition: .5s ease;
+}
+
+
+.nav-link {
+  color: #FFF!important;
+  cursor: pointer;
+  text-align: center;
+  line-height: 50px;
+  padding: 0 15px !important;
+  
+
+  
+}
+
+.nav-item:hover{
+  background: rgba(255, 255, 255, 0.3)!important;
+}
+
+#zaglavlje{
+    height: 50vh;
+    width: 100%;
+    background: url('../img/pice7.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 80%;
+}
+
+#iscezavanjek {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to top, transparent 0%, white 100%);
+}
+
+#glavni{
+    background-color: rgb(207,209,221);
+    min-height: 100vh;
+}
+
+#tekst p{
+    color: #22313f;
+    font-size: 18;
+    font-family: Verdana, "Geneva", Tahoma, sans-serif;
+    line-height: 30px;
+    padding: 40px;
+}
+#info{
+    width: 100%;
+    background: black;
+    color: grey;
+}
+#sredina{
+  max-height: 100px;
+  background: #22313f !important;
+  opacity: 0.8;
+  padding: 0!important;
+  transition: .5s ease;
+}
+.opcije {
+  color: #FFF!important;
+  cursor: pointer;
+  text-align: center;
+  line-height: 50px;
+  padding: 0 15px !important;
+}
+.mm2{
+    background-color: green;
+}
+.mm3{
+    width: 50%;
+}
+#topli_napitci{
+    max-height: 30%;
+    height: 8%;
+    width: 100%;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    background-color: #506375 !important;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+.za-sliku{
+    
+    max-width: 80px;
+    min-width: 80px;
+    margin:auto;
+    margin-left: 0;
+    margin-right: 0;
+   
+}
+.menu-bar{
+    background-color: transparent;
+    width: 100%;
+}
+.menu-bar2{
+    background-color: #fff;
+    width: 100%;
+  }
+.col-8 h2{
+    resize: auto;
+    padding-top: 10px;
+    color: white;
+}
+#sticky-sidebar {
+    position: fixed;
+    z-index: 10000;
+    width: 41.7%;
+    height: 100%;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+
+    }
+   .boja{
+    background-color: #506375;
+  
+   }
+    a {
+        color: white;
+        text-decoration: none; /* no underline */
+      }
+      a:hover {
+        text-decoration: none;
+        color: white;
+    }¸
+    a:visited {
+        text-decoration: none;
+        color: white;
+    }
+    a:active {
+        text-decoration: none;
+        color: white;
+    }
