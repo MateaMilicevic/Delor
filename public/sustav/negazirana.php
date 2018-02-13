@@ -38,7 +38,7 @@ $result1 = mysqli_query($connect, $query1);
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
 		    <ul class="navbar-nav ml-auto">
 	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
-              <li class="nav-item option"><a class="nav-link" href="dodavanje.php">Novi artikal</a></li>
+              <li class="nav-item option"><a class="nav-link" href="artikl.php">Novi artikal</a></li>
               <li class="nav-item option"><a class="nav-link" href="profil.php">Skladišta</a></li>
 
 	          <li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
