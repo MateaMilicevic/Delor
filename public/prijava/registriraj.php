@@ -26,15 +26,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		} else {
 			$sql = "INSERT INTO korisnik (ime, prezime, email, korisnicko_ime, lozinka, tip, broj_telefona) "
 			. "VALUES ('$ime','$prezime','$email', '$korime', '$lozinka', '$uloga', $telbroj)";
-
 			if ($mysqli->query($sql)){
-				$_SESSION['message'] = "Uspjesna registracija.";
-				header("location: poruka.php"); //Dodaj alert $_SESSION['message']
-			} else {
-				$_SESSION['message'] = $sql;
-				header("location: poruka.php"); //Dodaj alert $_SESSION['message']
+			header("location: session.php");
 			}
-
 		}
 
 	}
