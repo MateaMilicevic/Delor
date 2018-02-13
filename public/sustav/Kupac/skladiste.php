@@ -30,8 +30,8 @@ $result2 = mysqli_query($connect, $query2);
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>DelOr</title>
-	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/profil.css">
+	<link rel="stylesheet" type="text/css" media="all" href="../../../src/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" media="all" href="../../../src/css/profil.css">
 </head>
 <body>
 		<nav id="myNavbar" class="navbar navbar-toggleable-md navbar-light bg-faded">
@@ -41,7 +41,7 @@ $result2 = mysqli_query($connect, $query2);
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
 		    <ul class="navbar-nav ml-auto">
 	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
-              <li class="nav-item option"><a class="nav-link" href="artikl.php">Novi artikal</a></li>
+              <li class="nav-item option"><a class="nav-link" href="kosarica.php">Košarica</a></li>
               <li class="nav-item option"><a class="nav-link" href="profil.php">Skladišta</a></li>
 
 	          <li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
@@ -104,7 +104,7 @@ $result2 = mysqli_query($connect, $query2);
 	  						<th>Cijena</th>
       						<th>Neto kolicina</th>
       						<th>Dostupnost</th>
-							
+                            <th>Odabir</th>
     					</tr>
 
   					</thead>
@@ -117,6 +117,12 @@ $result2 = mysqli_query($connect, $query2);
                 <td><?php echo $artikal['cijena'];?></td>
 				<td><?php echo $artikal['neto_kolicina'];?></td>
 				<td><?php echo $artikal['dostupnost'];?></td>
+                <td><div class="btn">
+                        <form method="post" action="">
+                            <input type="text" name="kolicina" value="1" size="1" class="demo-input-box">
+                            <input type="submit"  value="Dodaj u košaricu" name="potvrda">
+                        </form>
+                    </div></td>
             </tr>
             <?php endwhile;?>
 							
@@ -128,9 +134,9 @@ $result2 = mysqli_query($connect, $query2);
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="../../src/js/tether.min.js" type="text/javascript"></script>
-	<script src="../../src/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="../../src/js/index.js" type="text/javascript"></script>
+	<script src="../../../src/js/tether.min.js" type="text/javascript"></script>
+	<script src="../../../src/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../../../src/js/index.js" type="text/javascript"></script>
 
 </body>
 </html>

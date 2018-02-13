@@ -96,77 +96,20 @@ html, body{
   padding: 0!important;
   transition: .5s ease;
 }
-.opcije {
-  color: #FFF!important;
-  cursor: pointer;
-  text-align: center;
-  line-height: 50px;
-  padding: 0 15px !important;
-}
-.mm2{
-    background-color: green;
-}
-.mm3{
-    width: 50%;
-}
-#topli_napitci{
-    max-height: 30%;
-    height: 8%;
-    width: 100%;
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-    background-color: #506375 !important;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
-}
-.za-sliku{
+#btnIsprazni{
     
-    max-width: 80px;
-    min-width: 80px;
-    margin:auto;
-    margin-left: 0;
-    margin-right: 0;
-   
+        background-color:#22313f;
+        border: #FFF 1px solid;
+        padding: 1px 10px;
+        color: #FFF;
+        float: right;
+        text-decoration: none;
+        border-radius: 4px;
+        height: 40px;
+    
 }
-.menu-bar{
-    background-color: transparent;
+.zaglavlje3{
+    background-color:#22313f;
+    color: #FFF;
     width: 100%;
 }
-.menu-bar2{
-    background-color: #fff;
-    width: 100%;
-  }
-.col-8 h2{
-    resize: auto;
-    padding-top: 10px;
-    color: white;
-}
-#sticky-sidebar {
-    position: fixed;
-    z-index: 10000;
-    width: 41.7%;
-    height: 100%;
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-
-    }
-   .boja{
-    background-color: #506375;
-  
-   }
-    a {
-        color: white;
-        text-decoration: none; /* no underline */
-      }
-      a:hover {
-        text-decoration: none;
-        color: white;
-    }¸
-    a:visited {
-        text-decoration: none;
-        color: white;
-    }
-    a:active {
-        text-decoration: none;
-        color: white;
-    }
