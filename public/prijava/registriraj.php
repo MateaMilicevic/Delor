@@ -27,11 +27,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$sql = "INSERT INTO korisnik (ime, prezime, email, korisnicko_ime, lozinka, tip, broj_telefona) "
 			. "VALUES ('$ime','$prezime','$email', '$korime', '$lozinka', '$uloga', $telbroj)";
 			if ($mysqli->query($sql)){
-			header("location: session.php");
+			header("location: ../sustav/moranje.php");
 			}
 		}
 
 	}
 }
-$_SESSION["korime"] = $korime;
+$_SESSION['korime'] = $korime;
 ?>

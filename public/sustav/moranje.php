@@ -57,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 			$sql = " UPDATE korisnik SET ime_firme='$ime_firme' , faks= '$faks', adresa='$adresa', grad= '$grad', drzava= '$drzava', postanski_broj= '$postanski_broj' WHERE korisnicko_ime ='".$_SESSION['korime']."'";
 			if ($mysqli->query($sql)){
-				header("location: moj_profil.php");
+				header("location: session.php");
 			}
 	}
 }
