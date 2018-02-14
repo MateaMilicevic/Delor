@@ -113,3 +113,7 @@ html, body{
     color: #FFF;
     width: 100%;
 }
+
+.container-fluid{
+  background-color: grey !important;
+}

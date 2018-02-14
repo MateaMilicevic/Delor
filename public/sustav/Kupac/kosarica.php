@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>DelOr</title>
+	<title>Kosarica</title>
 	<link rel="stylesheet" type="text/css" media="all" href="../../../src/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" media="all" href="../../../src/css/kosarica.css">
 </head>
@@ -31,7 +31,7 @@
 		</div>
       
 		<div class="row no-gutters">
-			<div id="kosarica">
+			<div id="kosarica" class="col-8">
                 <div class="zaglavlje3">
                     <h1>Košarica</h1>
                     <a id="btnIsprazni" href="kosarica.php?action=empty" ><h5>Isprazni košaricu</h5></a>
