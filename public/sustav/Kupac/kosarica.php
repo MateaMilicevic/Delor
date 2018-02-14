@@ -18,9 +18,8 @@
 	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
               <li class="nav-item option"><a class="nav-link" href="kosarica.php">Košarica</a></li>
               <li class="nav-item option"><a class="nav-link" href="profil.php">Skladišta</a></li>
-
-	          <li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
-             </ul>
+			  <li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
+            </ul>
 		  </div>
 		</nav>
 
@@ -30,7 +29,7 @@
 			</div>
 		</div>
       
-		<div class="row no-gutters">
+		<div id="row no-gutters" class="d-flex justify-content-center">
 			<div id="kosarica" class="col-8">
                 <div class="zaglavlje3">
                     <h1>Košarica</h1>
@@ -43,8 +42,8 @@
       						    <th>#</th>
 	 						    <th>Naziv</th>
 	  						    <th>Cijena</th>
-      						    <th>Neto kolicina</th>
-      						    <th>Dostupnost</th>
+      						    <th>Neto količina</th>
+      						    <th>Količina</th>
                                 <th>Odabir</th>
     					    </tr>
                        </tbody> 
