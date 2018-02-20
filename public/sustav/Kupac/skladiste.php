@@ -21,6 +21,8 @@ $result1 = mysqli_query($connect, $query1);
 // result for method two 
 $result2 = mysqli_query($connect, $query2);
 
+
+
 ?>
 
 <!DOCTYPE>
@@ -44,7 +46,7 @@ $result2 = mysqli_query($connect, $query2);
               <li class="nav-item option"><a class="nav-link" href="kosarica.php">Košarica</a></li>
               <li class="nav-item option"><a class="nav-link" href="profil.php">Skladišta</a></li>
 
-	          <li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
+	          <li class="nav-item option"><a class="nav-link" href="../../prijava/odjava.php">Odjava</a></li>
              </ul>
 		  </div>
 		</nav>
@@ -63,7 +65,7 @@ $result2 = mysqli_query($connect, $query2);
 						<img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
 					</div>
       					<div class="col-8">
-       						<h2><a href="profil.php">TOPLI NAPITCI</a></h2>
+       						<h2><a href="../profil.php">TOPLI NAPITCI</a></h2>
       					</div>
 				</div>
 				<div id="topli_napitci" class="row menu-bar">
@@ -71,16 +73,7 @@ $result2 = mysqli_query($connect, $query2);
 						<img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
 					</div>
       					<div class="col-8">
-       						<h2><a href="gazirana.php">GAZIRANA PIĆA</a></h2>
-      					</div>
-				</div>
-
-				<div id="topli_napitci" class="row menu-bar">
-					<div class="col-sm-1 za-sliku">
-						<img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
-					</div>
-      					<div class="col-8">
-       						<h2><a href="alkoholna.php">ALKOHOLNA PIĆA</a></h2>
+       						<h2><a href="../gazirana.php">GAZIRANA PIĆA</a></h2>
       					</div>
 				</div>
 
@@ -89,7 +82,16 @@ $result2 = mysqli_query($connect, $query2);
 						<img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
 					</div>
       					<div class="col-8">
-       						<h2><a href="negazirana.php">NEGAZIRANA PIĆA</a></h2>
+       						<h2><a href="../alkoholna.php">ALKOHOLNA PIĆA</a></h2>
+      					</div>
+				</div>
+
+				<div id="topli_napitci" class="row menu-bar">
+					<div class="col-sm-1 za-sliku">
+						<img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
+					</div>
+      					<div class="col-8">
+       						<h2><a href="../negazirana.php">NEGAZIRANA PIĆA</a></h2>
       					</div>
 				</div>
 			</div>
@@ -112,17 +114,19 @@ $result2 = mysqli_query($connect, $query2);
 						
 					  <?php while($artikal = mysqli_fetch_array($result1)):;?>
             <tr>
-                <td><?php echo $artikal['id_artikla'];?></td>
-                <td><?php echo $artikal['naziv'];?></td>
-                <td><?php echo $artikal['cijena'];?></td>
-				<td><?php echo $artikal['neto_kolicina'];?></td>
+			<form method="post" action="kosarica.php?action=add&id=<?php echo $artikal["id_artikla"]?>">
+                <td><input type ="hidden" name ="id_artikla" value ="<?php echo $artikal['id_artikla'];?>"><?php echo $artikal['id_artikla'];?></td>
+                <td><input type="hidden" name="ime" value="<?php echo $artikal['naziv'];?>"><?php echo $artikal['naziv'];?></td>
+                <td><nput type="hidden" name="cijena" value="<?php $artikal['cijena'];?>"><?php echo $artikal['cijena'];?></td>
+				<td><input type="hidden" name="neto" value="<?php echo $artikal['neto_kolicina'];?>"><?php echo $artikal['neto_kolicina'];?></td>
 				<td><?php echo $artikal['dostupnost'];?></td>
                 <td><div class="btn">
-                        <form method="post" action="">
+                       
                             <input type="text" name="kolicina" value="1" size="1" class="demo-input-box">
-                            <input type="submit"  value="Dodaj u košaricu" name="potvrda">
-                        </form>
+                            <input type="submit"  value="Dodaj u košaricu" name="add">
+                        
                     </div></td>
+					</form>
             </tr>
             <?php endwhile;?>
 							
