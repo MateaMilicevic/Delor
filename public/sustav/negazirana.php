@@ -31,7 +31,7 @@ $result1 = mysqli_query($connect, $query1);
 	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/profil.css">
 </head>
 <body>
-		<nav id="myNavbar" class="navbar navbar-toggleable-md navbar-light bg-faded">
+		<nav id="myNavbar" class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
 		  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>

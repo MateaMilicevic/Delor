@@ -53,7 +53,7 @@ if (isset($_GET["action"])){
 	<link rel="stylesheet" type="text/css" media="all" href="../../../src/css/kosarica.css">
 </head>
 <body>
-		<nav id="myNavbar" class="navbar navbar-toggleable-md navbar-light bg-faded">
+		<nav id="myNavbar" class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
 		  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -74,7 +74,7 @@ if (isset($_GET["action"])){
 			</div>
 		</div>
       
-		<div class="row no-gutters">
+		<div id="row no-gutters" class="d-flex justify-content-center">
 			<div id="kosarica" class="col-8">
                 <div class="zaglavlje3">
                     <h1>Košarica</h1>
