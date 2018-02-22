@@ -1,6 +1,6 @@
 <?php
+require 'db.php';
 
-// php populate html table from mysql database
 
 $hostname = "localhost";
 $username = "root";
@@ -12,14 +12,26 @@ $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
 // mysql select query
 
-$query1 = "SELECT * FROM artikal WHERE tip='Topli napitci'";
+$query1 = "SELECT * FROM artikal";
 $query2 = "SELECT * FROM artikal WHERE naziv='coca'";
 
+if(isset($_POST['TN'])) {
+	$query1 = "SELECT * FROM artikal WHERE tip='Topli napitci'";
+}elseif(isset($_POST['GP'])){
+	$query1 = "SELECT * FROM artikal WHERE tip='Gazirana pica'";
+}elseif(isset($_POST['AP'])){
+	$query1 = "SELECT * FROM artikal WHERE tip='Alkoholna pica'";
+}elseif(isset($_POST['NP'])){
+	$query1 = "SELECT * FROM artikal WHERE tip='Negazirana pica'";
+}
 // result for method one
 $result1 = mysqli_query($connect, $query1);
 
 // result for method two 
 $result2 = mysqli_query($connect, $query2);
+
+
+
 
 ?>
 
@@ -34,7 +46,7 @@ $result2 = mysqli_query($connect, $query2);
 	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/profil.css">
 </head>
 <body>
-		<nav id="myNavbar" class="navbar navbar-toggleable-md navbar-light bg-faded">
+		<nav id="myNavbar" class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
 		  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -57,30 +69,22 @@ $result2 = mysqli_query($connect, $query2);
       
 		<div class="row no-gutters">
 			<div id="boja" class="col-sm-5 boja">
-			<div  id="sticky-sidebar" class="col-sm-5 wrapper is-sticky">
+			<div  id="sticky-sidebar" class="col-sm-5 wrapper is-sticky boja">
 				<div id="topli_napitci" class="row menu-bar">
 					<div class="col-sm-1 za-sliku">
 						<img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
 					</div>
       					<div class="col-8">
-       						<h2><a href="profil.php">TOPLI NAPITCI</a></h2>
-      					</div>
+							  <form method="POST" action="profil.php">
+       						<h2><input type="submit" name="TN" style=" color: white; background-color: transparent; border-color: transparent; cursor: default;" value="TOPLI NAPITCI"></h2>
+						</div>
 				</div>
 				<div id="topli_napitci" class="row menu-bar">
 					<div class="col-sm-1 za-sliku">
 						<img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
 					</div>
       					<div class="col-8">
-       						<h2><a href="gazirana.php">GAZIRANA PIĆA</a></h2>
-      					</div>
-				</div>
-
-				<div id="topli_napitci" class="row menu-bar">
-					<div class="col-sm-1 za-sliku">
-						<img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
-					</div>
-      					<div class="col-8">
-       						<h2><a href="alkoholna.php">ALKOHOLNA PIĆA</a></h2>
+       						<h2><input type="submit" name="GP" style="color: white; background-color: transparent; border-color: transparent; cursor: default;" value="GAZIRANA PICA"></h2>
       					</div>
 				</div>
 
@@ -89,8 +93,18 @@ $result2 = mysqli_query($connect, $query2);
 						<img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
 					</div>
       					<div class="col-8">
-       						<h2><a href="negazirana.php">NEGAZIRANA PIĆA</a></h2>
+       						<h2><input type="submit" name="AP" style="color: white; background-color: transparent; border-color: transparent; cursor: default;" value="ALKOHOLNA PICA"></h2>
       					</div>
+				</div>
+
+				<div id="topli_napitci" class="row menu-bar">
+					<div class="col-sm-1 za-sliku">
+						<img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
+					</div>
+      					<div class="col-8">
+       						<h2><input type="submit" name="NP" style="color: white; background-color: transparent; border-color: transparent; cursor: default;" value="NEGAZIRANA PICA"></h2>
+						  </div>
+						  </form>
 				</div>
 			</div>
 			</div>
@@ -100,7 +114,7 @@ $result2 = mysqli_query($connect, $query2);
   					<thead class="thead-inverse">
    						 <tr>
       						<th>#</th>
-	 						 <th>Naziv</th>
+	 						<th>Naziv</th>
 	  						<th>Cijena</th>
       						<th>Neto kolicina</th>
       						<th>Dostupnost</th>
@@ -109,8 +123,8 @@ $result2 = mysqli_query($connect, $query2);
 
   					</thead>
   					<tbody>
-						
-					  <?php while($artikal = mysqli_fetch_array($result1)):;?>
+					  <?php while($artikal = mysqli_fetch_array($result1)):;?>	
+					 
             <tr>
                 <td><?php echo $artikal['id_artikla'];?></td>
                 <td><?php echo $artikal['naziv'];?></td>
@@ -118,15 +132,18 @@ $result2 = mysqli_query($connect, $query2);
 				<td><?php echo $artikal['neto_kolicina'];?></td>
 				<td><?php echo $artikal['dostupnost'];?></td>
             </tr>
-            <?php endwhile;?>
-							
+            
+			<?php endwhile;?>			
 					  	
 				</table>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	<script>
+	document.getElementById('TN').style.display='hidden';
+	document.getElementById('subm1').style.display='block';
+	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="../../src/js/tether.min.js" type="text/javascript"></script>
 	<script src="../../src/js/bootstrap.min.js" type="text/javascript"></script>

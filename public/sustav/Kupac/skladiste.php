@@ -1,7 +1,6 @@
 <?php
-
+session_start();
 // php populate html table from mysql database
-
 $hostname = "localhost";
 $username = "root";
 $password = "";
@@ -11,15 +10,59 @@ $databaseName = "db_delor";
 $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
 // mysql select query
+if(isset($_SESSION['TN'])){
+	$query1 = "SELECT * FROM artikal WHERE tip='Topli napitci'";
+}
+if(isset($_SESSION['GP'])){
+	$query1 = "SELECT * FROM artikal WHERE tip='Gazirana pica'";
+}
 
-$query1 = "SELECT * FROM artikal WHERE tip='Topli napitci'";
+if(isset($_SESSION['AP'])){
+	$query1 = "SELECT * FROM artikal WHERE tip='Alkoholna pica'";
+}
+
+if(isset($_SESSION['NP'])){
+	$query1 = "SELECT * FROM artikal WHERE tip='Negazirana pica'";
+}
+
+if(!isset($_SESSION['TN'])&&!isset($_SESSION['GP'])&&!isset($_SESSION['AP'])&&!isset($_SESSION['NP'])){
+	$query1 = "SELECT * FROM artikal";
+}
+
 $query2 = "SELECT * FROM artikal WHERE naziv='coca'";
 
+if(isset($_POST['TN'])) {
+	$_SESSION['TN']=$_POST['TN'];
+	if(isset($_SESSION['GP'])) unset($_SESSION['GP']);
+	if(isset($_SESSION['AP'])) unset($_SESSION['AP']);
+	if(isset($_SESSION['NP'])) unset($_SESSION['NP']);
+	$query1 = "SELECT * FROM artikal WHERE tip='Topli napitci'";
+}elseif(isset($_POST['GP'])){
+	$_SESSION['GP']=$_POST['GP'];
+	if(isset($_SESSION['TN'])) unset($_SESSION['TN']);
+	if(isset($_SESSION['AP'])) unset($_SESSION['AP']);
+	if(isset($_SESSION['NP'])) unset($_SESSION['NP']);
+	$query1 = "SELECT * FROM artikal WHERE tip='Gazirana pica'";
+}elseif(isset($_POST['AP'])){
+	$_SESSION['AP']=$_POST['AP'];
+	if(isset($_SESSION['TN'])) unset($_SESSION['TN']);
+	if(isset($_SESSION['GP'])) unset($_SESSION['GP']);
+	if(isset($_SESSION['NP'])) unset($_SESSION['NP']);
+	$query1 = "SELECT * FROM artikal WHERE tip='Alkoholna pica'";
+}elseif(isset($_POST['NP'])){
+	$_SESSION['NP']=$_POST['NP'];
+	if(isset($_SESSION['TN'])) unset($_SESSION['TN']);
+	if(isset($_SESSION['AP'])) unset($_SESSION['AP']);
+	if(isset($_SESSION['GP'])) unset($_SESSION['GP']);
+	$query1 = "SELECT * FROM artikal WHERE tip='Negazirana pica'";
+}
 // result for method one
 $result1 = mysqli_query($connect, $query1);
 
 // result for method two 
 $result2 = mysqli_query($connect, $query2);
+
+
 
 ?>
 
@@ -34,7 +77,7 @@ $result2 = mysqli_query($connect, $query2);
 	<link rel="stylesheet" type="text/css" media="all" href="../../../src/css/profil.css">
 </head>
 <body>
-		<nav id="myNavbar" class="navbar navbar-toggleable-md navbar-light bg-faded">
+		<nav id="myNavbar" class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
 		  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -42,9 +85,9 @@ $result2 = mysqli_query($connect, $query2);
 		    <ul class="navbar-nav ml-auto">
 	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
               <li class="nav-item option"><a class="nav-link" href="kosarica.php">Košarica</a></li>
-              <li class="nav-item option"><a class="nav-link" href="profil.php">Skladišta</a></li>
+              <li class="nav-item option"><a class="nav-link" href="skladiste.php">Skladišta</a></li>
 
-	          <li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
+	          <li class="nav-item option"><a class="nav-link" href="../../prijava/odjava.php">Odjava</a></li>
              </ul>
 		  </div>
 		</nav>
@@ -63,34 +106,36 @@ $result2 = mysqli_query($connect, $query2);
 						<img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
 					</div>
       					<div class="col-8">
-       						<h2><a href="profil.php">TOPLI NAPITCI</a></h2>
-      					</div>
-				</div>
-				<div id="topli_napitci" class="row menu-bar">
-					<div class="col-sm-1 za-sliku">
-						<img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
-					</div>
-      					<div class="col-8">
-       						<h2><a href="gazirana.php">GAZIRANA PIĆA</a></h2>
-      					</div>
-				</div>
+						  <form method="POST" action="skladiste.php">
+						  <h2><input type="submit" name="TN" style=" color: white; background-color: transparent; border-color: transparent; cursor: default;" value="TOPLI NAPITCI"></h2>
+				   </div>
+		   </div>
+		   <div id="topli_napitci" class="row menu-bar">
+			   <div class="col-sm-1 za-sliku">
+				   <img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
+			   </div>
+					 <div class="col-8">
+						  <h2><input type="submit" name="GP" style="color: white; background-color: transparent; border-color: transparent; cursor: default;" value="GAZIRANA PICA"></h2>
+					 </div>
+		   </div>
 
-				<div id="topli_napitci" class="row menu-bar">
-					<div class="col-sm-1 za-sliku">
-						<img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
-					</div>
-      					<div class="col-8">
-       						<h2><a href="alkoholna.php">ALKOHOLNA PIĆA</a></h2>
-      					</div>
-				</div>
+		   <div id="topli_napitci" class="row menu-bar">
+			   <div class="col-sm-1 za-sliku">
+				   <img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
+			   </div>
+					 <div class="col-8">
+						  <h2><input type="submit" name="AP" style="color: white; background-color: transparent; border-color: transparent; cursor: default;" value="ALKOHOLNA PICA"></h2>
+					 </div>
+		   </div>
 
-				<div id="topli_napitci" class="row menu-bar">
-					<div class="col-sm-1 za-sliku">
-						<img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
-					</div>
-      					<div class="col-8">
-       						<h2><a href="negazirana.php">NEGAZIRANA PIĆA</a></h2>
-      					</div>
+		   <div id="topli_napitci" class="row menu-bar">
+			   <div class="col-sm-1 za-sliku">
+				   <img src="http://superawesomevectors.com/wp-content/uploads/2017/04/flat-coffee-cup-icon-800x566.jpg" class="slika image-fluid img-thumbnail img-responsive" alt="Cinque Terre">
+			   </div>
+					 <div class="col-8">
+						  <h2><input type="submit" name="NP" style="color: white; background-color: transparent; border-color: transparent; cursor: default;" value="NEGAZIRANA PICA"></h2>
+					 </div>
+					 </form>
 				</div>
 			</div>
 			</div>
@@ -100,7 +145,7 @@ $result2 = mysqli_query($connect, $query2);
   					<thead class="thead-inverse">
    						 <tr>
       						<th>#</th>
-	 						 <th>Naziv</th>
+	 						<th>Naziv</th>
 	  						<th>Cijena</th>
       						<th>Neto kolicina</th>
       						<th>Dostupnost</th>
@@ -112,17 +157,19 @@ $result2 = mysqli_query($connect, $query2);
 						
 					  <?php while($artikal = mysqli_fetch_array($result1)):;?>
             <tr>
-                <td><?php echo $artikal['id_artikla'];?></td>
-                <td><?php echo $artikal['naziv'];?></td>
-                <td><?php echo $artikal['cijena'];?></td>
-				<td><?php echo $artikal['neto_kolicina'];?></td>
+			<form method="post" action="kosarica.php?action=add&id=<?php echo $artikal["id_artikla"]?>">
+                <td><input type="hidden" name="id" value="<?php echo $artikal['id_artikla'];?>"><?php echo $artikal['id_artikla'];?></td>
+                <td><input type="hidden" name="ime" value="<?php echo $artikal['naziv'];?>"><?php echo $artikal['naziv'];?></td>
+                <td><input type="hidden" name="cijenaa" value="<?php echo $artikal['cijena'];?>"><?php echo $artikal['cijena'];?></td>
+				<td><input type="hidden" name="neto" value="<?php echo $artikal['neto_kolicina'];?>"><?php echo $artikal['neto_kolicina'];?></td>
 				<td><?php echo $artikal['dostupnost'];?></td>
                 <td><div class="btn">
-                        <form method="post" action="">
+                       
                             <input type="text" name="kolicina" value="1" size="1" class="demo-input-box">
-                            <input type="submit"  value="Dodaj u košaricu" name="potvrda">
-                        </form>
+                            <input type="submit"  value="Dodaj u košaricu" name="add">
+                        
                     </div></td>
+					</form>
             </tr>
             <?php endwhile;?>
 							
