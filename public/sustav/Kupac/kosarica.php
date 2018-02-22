@@ -4,27 +4,27 @@ session_start();
 
 if (isset($_POST["add"])){
 	if (isset($_SESSION["kosarica"])){
-		$item_array_id = array_column($_SESSION["kosarica"],"id_artikla");
+		$item_array_id = array_column($_SESSION["kosarica"],"id");
 		if (!in_array($_GET["id_artikla"],$item_array_id)){
 			$count = count($_SESSION["kosarica"]);
 			$item_array = array(
-				'id_artikla' => $_GET["id_artikla"],
+				'id' => $_POST["id"],
 				'ime_artikla' => $_POST["ime"],
-				'cijena' => $_POST["cijena"],
-				'kolicina' => $_POST["kolicina"],
+				'cijena2' => $_POST["cijenaa"],
+				'kolicina2' => $_POST["kolicina"],
 			);
 			$_SESSION["kosarica"][$count] = $item_array;
-			echo '<script>window.location="kosarica.php"</script>';
+			echo '<script>window.location="skladiste.php"</script>';
 		}else{
 			echo '<script>alert("Product is already Added to kosarica")</script>';
-			echo '<script>window.location="kosarica.php"</script>';
+			echo '<script>window.location="skladiste.php"</script>';
 		}
 	}else{
 		$item_array = array(
-			'id_artikla' => $_GET["id_artikla"],
+			'id' => $_GET["id"],
 			'ime_artikla' => $_POST["ime"],
-			'cijena' => $_POST["cijena"],
-			'kolicina' => $_POST["kolicina"],
+			'cijena2' => $_POST["cijenaa"],
+			'kolicina2' => $_POST["kolicina"],
 		);
 		$_SESSION["kosarica"][0] = $item_array;
 	}
@@ -33,13 +33,20 @@ if (isset($_POST["add"])){
 if (isset($_GET["action"])){
 	if ($_GET["action"] == "delete"){
 		foreach ($_SESSION["kosarica"] as $keys => $value){
-			if ($value["id_artikla"] == $_GET["id_artikla"]){
+			if ($value["id"] == $_GET["id"]){
 				unset($_SESSION["kosarica"][$keys]);
-				echo '<script>alert("Product has been Removed...!")</script>';
+				echo '<script>alert("Artikal ce biti uklonjen...!")</script>';
 				echo '<script>window.location="kosarica.php"</script>';
 			}
 		}
 	}
+	if (isset($_GET["action"])){
+		if ($_GET["action"] == "deleteall"){
+			unset($_SESSION["kosarica"]);
+			echo '<script>alert("Svi artikli ce biti uklonjeni...!")</script>';
+			echo '<script>window.location="kosarica.php"</script>';
+			}
+		}
 }
 ?>
 <!DOCTYPE>
@@ -86,10 +93,10 @@ if (isset($_GET["action"])){
                              <tr>
       						    <th>#</th>
 	 						    <th>Naziv</th>
+								 <th>Cijena</th>
 	  						    <th>Neto količina</th>
-      						    <th>Cijena</th>
-								<th>Ukupna cijena</th>
-                                <th>Odabir</th>
+								<th>Ukupna cijena </th>
+                                <th>Odabir <a href="kosarica.php?action=deleteall&id ?>">Obrisi sve</a></th>
     					    </tr>
 							<?php
 							if(!empty($_SESSION["kosarica"])){
@@ -97,20 +104,21 @@ if (isset($_GET["action"])){
 								foreach($_SESSION["kosarica"] as $key => $value){
 									?>
 									<tr>
-										<td><?php echo $value["id_artikla"]; ?></td>
+									
+										<td><?php echo $value["id"]; ?></td>
 										<td><?php echo $value["ime_artikla"]; ?></td>
-										<td><?php echo $value["kolicina"]; ?></td>
-										<td><?php echo $value["cijena"]; ?> KM</td>
-										<td><?php echo number_format( $value["kolicina"] * $value["cijena"], 2); ?> KM</td>
-										<td><a href="kosarica.php?action=delete&id=<?php echo $value["id_artikla"]; ?>"><span>Ukloni artikal</span> <a/></td>
+										<td><?php echo $value["cijena2"]; ?> KM</td>
+										<td><?php echo $value["kolicina2"]; ?></td>
+										<td><?php echo number_format($value["kolicina2"] * $value["cijena2"], 2); ?> KM</td>
+										<td><a href="kosarica.php?action=delete&id=<?php echo $value["id"]; ?>"><span>Ukloni artikal</span> <a/></td>
 									</tr>
 									<?php
-									$total= $total + ( $value["kolicina"] * $value["cijena"]);
+									$total = $total + ($value["kolicina2"] * $value["cijena2"]);
 								}
 									?>
 									<tr>
 									<td>Ukupno</td>
-									<th>$ <?php echo number_format($total, 2); ?></th>
+									<th><?php echo number_format($total, 2); ?> KM</th>
 									<td></td>
 									</tr>
 									<?php
