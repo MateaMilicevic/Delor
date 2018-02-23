@@ -13,41 +13,45 @@ $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
 // mysql select query
 if(isset($_SESSION['zap'])){
-	$query1 = "SELECT * FROM narudzbe WHERE stanje='zaprimljeno'";
+	$query1 = "SELECT * FROM narudzba WHERE stanje='zaprimljeno' AND id_prodavaca = '".$_SESSION['id_korisnik']."'";
 }
 if(isset($_SESSION['pot'])){
-	$query1 = "SELECT * FROM artikal WHERE stanje='potvrdeno'";
+	$query1 = "SELECT * FROM narudzba WHERE stanje='potvrdeno' AND id_prodavaca =' ".$_SESSION['id_korisnik']."'";
 }
 
 if(isset($_SESSION['prod'])){
-	$query1 = "SELECT * FROM artikal WHERE stanje='prodano'";
+	$query1 = "SELECT * FROM narudzba WHERE stanje='prodano' AND id_prodavaca = '".$_SESSION['id_korisnik']."'";
 }
 
 
 if(!isset($_SESSION['zap'])&&!isset($_SESSION['pot'])&&!isset($_SESSION['prod'])){
-	$query1 = "SELECT * FROM narudzbe";
+	$query1 = "SELECT * FROM narudzba AND id_prodavaca =' ".$_SESSION['id_korisnik']."'";
 }
-if(isset($_SESSION['ime_firme'])){
-	$query2 = "SELECT * FROM korisnik WHERE tip='kupac'";
-}
+
 
 if(isset($_POST['zap'])) {
 	$_SESSION['zap']=$_POST['zap'];
 	if(isset($_SESSION['pot'])) unset($_SESSION['pot']);
 	if(isset($_SESSION['prod'])) unset($_SESSION['prod']);
-	$query1 = "SELECT * FROM narudzba WHERE stanje='zaprimljeno' ";
+	$query1 = "SELECT * FROM narudzba WHERE stanje='zaprimljeno' AND id_prodavaca =' ".$_SESSION['id_korisnik']." '";
 }elseif(isset($_POST['pot'])){
 	$_SESSION['pot']=$_POST['pot'];
 	if(isset($_SESSION['zap'])) unset($_SESSION['zap']);
 	if(isset($_SESSION['prod'])) unset($_SESSION['prod']);
-	$query1 = "SELECT * FROM narudzbe WHERE stanje='potvrdeno'";
+	$query1 = "SELECT * FROM narudzba WHERE stanje='potvrdeno' AND id_prodavaca = '".$_SESSION['id_korisnik']."'";
 }elseif(isset($_POST['prod'])){
 	$_SESSION['prod']=$_POST['prod'];
 	if(isset($_SESSION['zap'])) unset($_SESSION['zap']);
 	if(isset($_SESSION['pot'])) unset($_SESSION['pot']);
-	$query1 = "SELECT * FROM narudzbe WHERE stanje='prodano'";
+	$query1 = "SELECT * FROM narudzba WHERE stanje='prodano' AND id_prodavaca =' ".$_SESSION['id_korisnik']."'";
 }
 // result for method one
+$_SESSION['id_kupca']= $query1['id_kupca'];
+
+if(isset($_SESSION['ime_firme'])){
+	$query2 = "SELECT * FROM korisnik WHERE id_korisnik = '".$_SESSION['id_kupca']."'";
+}
+
 $result1 = mysqli_query($connect, $query1);
 $result2 = mysqli_query($connect, $query2);
 ?>
