@@ -9,6 +9,7 @@ $databaseName = "db_delor";
 // connect to mysql
 $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
+
 // mysql select query
 if(isset($_SESSION['TN'])){
 	$query1 = "SELECT * FROM artikal WHERE tip='Topli napitci'";
@@ -29,7 +30,7 @@ if(!isset($_SESSION['TN'])&&!isset($_SESSION['GP'])&&!isset($_SESSION['AP'])&&!i
 	$query1 = "SELECT * FROM artikal";
 }
 
-$query2 = "SELECT * FROM artikal WHERE naziv='coca'";
+$query2 = "SELECT * FROM korisnik WHERE tip='prodavac'";
 
 if(isset($_POST['TN'])) {
 	$_SESSION['TN']=$_POST['TN'];
@@ -62,6 +63,18 @@ $result1 = mysqli_query($connect, $query1);
 // result for method two 
 $result2 = mysqli_query($connect, $query2);
 
+if(isset($_POST['skladiste'])){
+	if(isset($_SESSION['ime_firme']))
+	$query3 = "SELECT * FROM korisnik WHERE ime_firme='".$_SESSION['ime_firme']."'";
+	$result3 = mysqli_query($connect, $query3);
+	$ime = mysqli_fetch_array($result3);
+	$_SESSION['ida']= $ime['id'];
+	$_SESSION['ime_firme2']=$_SESSION['ime_firme'];
+
+	$query3 = "SELECT * FROM artikal WHERE id_korisnik = '".$_SESSION['ida']."'";
+	$result2 = mysqli_query($connect, $query3);
+
+}
 
 
 ?>
@@ -75,6 +88,7 @@ $result2 = mysqli_query($connect, $query2);
 	<title>DelOr</title>
 	<link rel="stylesheet" type="text/css" media="all" href="../../../src/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" media="all" href="../../../src/css/profil.css">
+	
 </head>
 <body>
 		<nav id="myNavbar" class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
@@ -84,6 +98,7 @@ $result2 = mysqli_query($connect, $query2);
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
 		    <ul class="navbar-nav ml-auto">
 	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
+			  <li class="nav-item-option nav-link navbar-toggler-center" style="border: 2px solid black; background-color: black;"><h2><?php echo $_SESSION['ime_firme'] ?></h2></li>
               <li class="nav-item option"><a class="nav-link" href="kosarica.php">Košarica</a></li>
               <li class="nav-item option"><a class="nav-link" href="skladiste.php">Skladišta</a></li>
 
@@ -97,7 +112,21 @@ $result2 = mysqli_query($connect, $query2);
 			<div id="iscezavanjek">
 			</div>
 		</div>
-      
+		<nav id="myNavbar2" class="navbar-toggleable-md navbar-light bg-faded nav2">
+		  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarResponsive">
+		    <ul class="navbar-nav ml-auto">
+				<?php while($skladiste = mysqli_fetch_array($result2)):;?>
+
+					<li class="nav-item option"><input type="submit"class="nav-link " value="<?php echo $skladiste['ime_firme'] ?>" name="skladiste"style="color: white; background-color: transparent; border-color: transparent; cursor: default;" ></input></li>
+
+				<?php endwhile;?>
+	          
+             </ul>
+		  </div>
+		</nav>
 		<div class="row no-gutters">
 			<div id="boja" class="col-sm-5 boja">
 			<div  id="sticky-sidebar" class="col-sm-5 wrapper is-sticky">

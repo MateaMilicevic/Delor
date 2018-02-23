@@ -64,3 +64,32 @@ body
     border: none;
     outline: none;
 }
+a{
+    color: white;
+    text-decoration: none; /* no underline */
+  }
+a:hover {
+    text-decoration: none;
+    color: white;
+}¸
+a:visited {
+    text-decoration: none;
+    color: white;
+}
+a:active {
+    text-decoration: none;
+    color: white;
+}
+#link{
+    float: right;
+    padding-right: 50%;
+    border: 2px solid #262626;
+    background-color: #262626;
+    height: 40px;
+    width: 50px;;
+align-content: center;
+}
+#ll{
+padding-top: 300px;
+padding-left: 200px;;
+}

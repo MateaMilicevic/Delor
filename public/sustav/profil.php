@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'db.php';
 
 
@@ -12,17 +13,17 @@ $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
 // mysql select query
 
-$query1 = "SELECT * FROM artikal";
+$query1 = "SELECT * FROM artikal WHERE id_korisnik = '".$_SESSION['id_korisnik']."'";
 $query2 = "SELECT * FROM artikal WHERE naziv='coca'";
 
 if(isset($_POST['TN'])) {
-	$query1 = "SELECT * FROM artikal WHERE tip='Topli napitci'";
+	$query1 = "SELECT * FROM artikal WHERE tip='Topli napitci' AND id_korisnik = '".$_SESSION['id_korisnik']."'";
 }elseif(isset($_POST['GP'])){
-	$query1 = "SELECT * FROM artikal WHERE tip='Gazirana pica'";
+	$query1 = "SELECT * FROM artikal WHERE tip='Gazirana pica' AND id_korisnik = '".$_SESSION['id_korisnik']."'";
 }elseif(isset($_POST['AP'])){
-	$query1 = "SELECT * FROM artikal WHERE tip='Alkoholna pica'";
+	$query1 = "SELECT * FROM artikal WHERE tip='Alkoholna pica' AND id_korisnik = '".$_SESSION['id_korisnik']."'";
 }elseif(isset($_POST['NP'])){
-	$query1 = "SELECT * FROM artikal WHERE tip='Negazirana pica'";
+	$query1 = "SELECT * FROM artikal WHERE tip='Negazirana pica' AND id_korisnik = '".$_SESSION['id_korisnik']."'";
 }
 // result for method one
 $result1 = mysqli_query($connect, $query1);

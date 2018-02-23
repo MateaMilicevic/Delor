@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		} else {
 			$user = $result->fetch_assoc();
 			if (password_verify($_POST['lozinka'], $user['lozinka'])) {
-				$_SESSION['id'] = $user['id_kupca'];
+				$_SESSION['id_korisnik'] = $user['id_korisnik'];
 				$_SESSION['email'] = $user['email'];
 				$_SESSION['ime'] = $user['ime'];
 				$_SESSION['prezime'] = $user['prezime'];
