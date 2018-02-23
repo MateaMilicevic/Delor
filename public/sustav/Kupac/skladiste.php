@@ -67,11 +67,6 @@ if(isset($_POST['skladiste'])){
 	if(isset($_SESSION['ime_firme']))
 	$query3 = "SELECT * FROM korisnik WHERE ime_firme='".$_SESSION['ime_firme']."'";
 	$result3 = mysqli_query($connect, $query3);
-	$ime = mysqli_fetch_array($result3);
-	$_SESSION['ida']= $ime['id'];
-	$_SESSION['ime_firme2']=$_SESSION['ime_firme'];
-
-	$query3 = "SELECT * FROM artikal WHERE id_korisnik = '".$_SESSION['ida']."'";
 	$result2 = mysqli_query($connect, $query3);
 
 }
@@ -112,21 +107,7 @@ if(isset($_POST['skladiste'])){
 			<div id="iscezavanjek">
 			</div>
 		</div>
-		<nav id="myNavbar2" class="navbar-toggleable-md navbar-light bg-faded nav2">
-		  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
-		  <div class="collapse navbar-collapse" id="navbarResponsive">
-		    <ul class="navbar-nav ml-auto">
-				<?php while($skladiste = mysqli_fetch_array($result2)):;?>
-
-					<li class="nav-item option"><input type="submit"class="nav-link " value="<?php echo $skladiste['ime_firme'] ?>" name="skladiste"style="color: white; background-color: transparent; border-color: transparent; cursor: default;" ></input></li>
-
-				<?php endwhile;?>
-	          
-             </ul>
-		  </div>
-		</nav>
+	
 		<div class="row no-gutters">
 			<div id="boja" class="col-sm-5 boja">
 			<div  id="sticky-sidebar" class="col-sm-5 wrapper is-sticky">
