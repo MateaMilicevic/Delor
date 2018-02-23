@@ -6,7 +6,7 @@ require 'db.php';
 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-	if(isset($_POST['potvrda'])) {
+if(isset($_POST['potvrda2'])) {
 		
 		$naziv = $_POST['naziv'];
 		$neto_kolicina = $_POST['neto_kolicina'];
@@ -18,25 +18,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 
 		
-			$sql = "INSERT INTO artikal (naziv, neto_kolicina, cijena, dostupnost, tip) "
-			. "VALUES ('$naziv','$neto_kolicina','$cijena', '$dostupnost','$tip' )";
-			if ($mysqli->query($sql)){
-				header("location: profil.php");
-			}
-	}else if(isset($_POST['potvrda2'])) {
-		
-		$naziv = $_POST['naziv'];
-		$neto_kolicina = $_POST['neto_kolicina'];
-		$cijena = $_POST['cijena'];
-		$dostupnost = $_POST['dostupnost'];
-		$tip = $_POST['tip1'];
-		$_SESSION['logged_in'] = true;
-
-		
-
-		
-			$sql = "INSERT INTO artikal (naziv, neto_kolicina, cijena, dostupnost, tip) "
-			. "VALUES ('$naziv','$neto_kolicina','$cijena', '$dostupnost','$tip' )";
+			$sql = "INSERT INTO artikal (naziv, neto_kolicina, cijena, dostupnost, tip, id_korisnik) "
+			. "VALUES ('$naziv','$neto_kolicina','$cijena', '$dostupnost','$tip', '".$_SESSION['id_korisnik']."' )";
 			if ($mysqli->query($sql)){
 				header("location: artikl.php");
 			}
@@ -62,7 +45,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="pozadina">
         <div class="kontenjer">          
-          <div class="naslov"><h1>Dodaj artikl</h1></div>
+          <div class="naslov"><h1>Dodaj artikl <?php echo ($_SESSION['id_korisnik']) ?></h1></div>
             <form method="post" action="artikl.php">
               <input type="text" placeholder="Naziv artikla" name="naziv" required><br>
 			        <input type="text" placeholder="Neto količina" name="neto_kolicina" required><br>
@@ -77,8 +60,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                  </select>
 				  <br>
 			  <input type="submit" value="Dodaj" name="potvrda2">
-              <input type="submit" value="Potvrdi" name="potvrda">
-           </form>
+			  <div id="link"><span id="ll"span><a href="profil.php">Potvrdi</a></span></div>
+		   </form>
+		  
          </div>
     </div>
 
