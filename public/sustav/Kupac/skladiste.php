@@ -93,7 +93,6 @@ if(isset($_POST['skladiste'])){
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
 		    <ul class="navbar-nav ml-auto">
 	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
-			  <li class="nav-item-option nav-link navbar-toggler-center" style="border: 2px solid black; background-color: black;"><h2><?php echo $_SESSION['ime_firme'] ?></h2></li>
               <li class="nav-item option"><a class="nav-link" href="kosarica.php">Košarica</a></li>
               <li class="nav-item option"><a class="nav-link" href="skladiste.php">Skladišta</a></li>
 

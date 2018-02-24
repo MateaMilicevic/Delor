@@ -9,46 +9,40 @@
 	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/pocetna2.css">
 </head>
 <body>
-		<nav id="myNavbar" class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
-		  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
-		  <div class="collapse navbar-collapse" id="navbarResponsive">
-		    <ul class="navbar-nav ml-auto">
-	          <li class="nav-item option"><a class="nav-link" href="">Početna</a></li>
-	          <li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
-             </ul>
-		  </div>
-		</nav>
+	<nav id="myNavbar" class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
+				<li class="nav-item option"><a class="nav-link" href="kosarica.php">Košarica</a></li>
+				<li class="nav-item option"><a class="nav-link" href="profil.php">Skladišta</a></li>
+				<li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
+			</ul>
+		</div>
+	</nav>
 
 	<div class="container-fluid">
 		<div id="zaglavlje" class="row">
 			<div id="iscezavanjek">
 			</div>
 		</div>
-<nav id="myNavbar2" class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <button class="navbar-toggler navbar-toggler-center" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-	<span class="navbar-toggler-icon"></span>
-  </button>
- <div class="collapse navbar-collapse" id="navbarResponsive">
-	<ul class="navbar-nav ml-auto">
-	  <li class="nav-item option"><a class="nav-link" href="">Skladište 1</a></li>
-	  <li class="nav-item option"><a class="nav-link" href="">Skladište 2</a></li>
-    </ul>
- </div>
-</nav>
-		<div id="glavni" class="row">
-
-			<div id="tekst" class="col-12 col-md-8 d-flex flex-column justify-content-center align-items-center">
-			    <p> "Tu imamo samo skladista za kupca"</p>
-			</div>
-			
-		</div>
-
-		<div id="info" class="row">
-			<div class="text-center">
-				nesto na kraju
-			</div>
+		<div class="row no-gutters">
+			<div class="col-9 boja2">
+				<nav id="myNavbar2" class="navbar sticky-top navbar-toggleable-md navbar-light bg-faded">
+						<button class="navbar-toggler navbar-toggler-center" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+					<div class="navbar-collapse collapse" >
+						<ul class="nav navbar-nav navbar-left">
+							<li class="nav-item option"><a class="nav-link" href="#">Novi</a></li>
+							<li class="nav-item option"><a class="nav-link " href="">Zaprimljeno</a></li>
+							<li class="nav-item option"><a class="nav-link " href="">Prodano</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>	
 		</div>
 	</div>
 
