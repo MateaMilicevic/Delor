@@ -52,7 +52,7 @@ session_start();
 								<a id="ikona" href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></i></a>
   							</div>
 					</div>
-        
+        ž
                 </div>
 			
                 <div class="col-9 boja2">
