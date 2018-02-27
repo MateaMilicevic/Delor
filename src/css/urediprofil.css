@@ -50,12 +50,12 @@ body
 }
 .okvir input
 {
-    width: 100%;
+    width: 90%;
     margin-bottom: 10px;
 }
 .okvir input[type="text"]
 {
-    width: 100%;
+    width: 90%;
     border: none;
     border-bottom: 2px solid #22313f;
     outline: none;
