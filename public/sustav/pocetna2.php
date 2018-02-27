@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+require 'db.php';
+// php populate html table from mysql database
+
+
+$query1 = "SELECT * FROM korisnik WHERE tip = 'prodavac' ";
+
+
+$result1 = mysqli_query($mysqli, $query1);
+
+?>
 <!DOCTYPE>
 <html>
 <head>
@@ -17,7 +30,7 @@
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
 				<li class="nav-item option"><a class="nav-link" href="kosarica.php">Košarica</a></li>
-				<li class="nav-item option"><a class="nav-link" href="kupac/skladiste.php">Skladišta</a></li>
+				<li class="nav-item option"><a class="nav-link" href="profil.php">Skladišta</a></li>
 				<li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
 			</ul>
 		</div>
@@ -28,22 +41,33 @@
 			<div id="iscezavanjek">
 			</div>
 		</div>
-		<div id="ostatak" class="row">
+		<div id="ostatak">
 		<div class="row">
-				<table class="table">
-  					<tbody>
-					  <?php while($korisnik = mysqli_fetch_array($result2)):;?>	
-					 <tr>
-						<form method="post" action="bijelastr.php?action=add&id=<?php echo $korisnik["ime_firme"]?>">
-							<td><input type="submit" name="ime_firme" value="<?php echo $korisnik['ime_firme'];?>">
-							</td>
-						</form>
-					</tr>
+	
+			<?php while($korisnik = mysqli_fetch_array($result1)):
+			
+		
+		
+			?>
+		
+		
+			<form method="post" action="pocetna2.php">
+				<div class="Leo">
+					<div class="btn">
+	
+					<input type="submit" name="ime_firme" style="color: rgb(207,209,221) ; font-size:60 ;  background-color: transparent;
+					border-color: transparent;  cursor: default;" value="<?php echo $korisnik['ime_firme'];?> " >
+					<input type="hidden" name="id_korisnika" value=" <?php echo $korisnik['id_korisnik'];?> "  >
+					
+				</div>
+				</div>
+			</form>
+					
 
             
 			<?php endwhile;?>			
 					  	
-				</table>
+				
 			
 			</div>
         		</div>
