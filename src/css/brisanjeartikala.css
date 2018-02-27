@@ -61,26 +61,64 @@ html, body{
     background-color: rgb(207,209,221);
     min-height: 100vh;
 }
-
-#tekst p{
-    color: #22313f;
-    font-size: 18;
-    font-family: Verdana, "Geneva", Tahoma, sans-serif;
-    line-height: 30px;
-    padding: 40px;
+#topli_napitci{
+  max-height: 30%;
+  height: 8%;
+  width: 100%;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  background-color: #506375 !important;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
 }
-
-.reklame {
-    max-width: 170px;
-    padding: 10px 0;
+.za-sliku{
+  
+  max-width: 80px;
+  min-width: 80px;
+  margin:auto;
+  margin-left: 0;
+  margin-right: 0;
+ 
 }
-
-#reklame1{
-    min-height:100vh; 
+.menu-bar{
+  background-color: transparent;
+  width: 100%;
 }
-
-#info{
-    width: 100%;
-    background-color: black;
-    color: grey;
+.menu-bar2{
+  background-color: #fff;
+  width: 100%;
 }
+.col-8 h2{
+  resize: auto;
+  padding-top: 10px;
+  color: white;
+}
+#sticky-sidebar {
+  position: fixed;
+  z-index: 10000;
+  width: 41.7%;
+  height: 100%;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+
+  }
+ .boja{
+  background-color: #506375;
+
+ }
+  a {
+      color: white;
+      text-decoration: none; /* no underline */
+    }
+    a:hover {
+      text-decoration: none;
+      color: white;
+  }¸
+  a:visited {
+      text-decoration: none;
+      color: white;
+  }
+  a:active {
+      text-decoration: none;
+      color: white;
+  }
