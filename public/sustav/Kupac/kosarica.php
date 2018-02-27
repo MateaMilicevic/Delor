@@ -48,6 +48,24 @@ if (isset($_GET["action"])){
 			}
 		}
 }
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+	if(isset($_POST['potvrda'])) {
+			
+
+			$cijena= "$total";
+
+			
+	
+			
+				$sql = "INSERT INTO detalji_narudzbe(cijena) "
+				. "VALUES ('$naziv','$neto_kolicina','$cijena', '$dostupnost','$tip', '".$_SESSION['id_korisnik']."' )";
+				if ($mysqli->query($sql)){
+					header("location: artikl.php");
+				}
+		}		
+	
+		}
 ?>
 <!DOCTYPE>
 <html>
@@ -118,6 +136,12 @@ if (isset($_GET["action"])){
 									?>
 									<tr>
 									<td>Ukupno</td>
+									<td>
+									<form metod="post" action="kosarica.php">
+									<input type="submit" value="Potvrdi" name="potvrda">
+									
+									</form>
+									</td>
 									<th><?php echo number_format($total, 2); ?> KM</th>
 									<td></td>
 									</tr>
