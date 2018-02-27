@@ -1,4 +1,5 @@
 <?php
+require 'db.php';
 session_start();
 
 
@@ -48,24 +49,43 @@ if (isset($_GET["action"])){
 			}
 		}
 }
-
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
+date_default_timezone_set("Europe/Zagreb");
+$datum= date("d/m/Y");
+$vrijeme= date("h:i:sa");
+echo $vrijeme;
+$_SESSION['vrijeme']=$vrijeme;
+$_SESSION['datum']= $datum;
 	if(isset($_POST['potvrda'])) {
-			
-
-			$cijena= "$total";
-
-			
-	
-			
-				$sql = "INSERT INTO detalji_narudzbe(cijena) "
-				. "VALUES ('$naziv','$neto_kolicina','$cijena', '$dostupnost','$tip', '".$_SESSION['id_korisnik']."' )";
+		$_SESSION['ubaci']= 22;	
+				$sql = "INSERT INTO narudzba (ukupna_cijena, ukupna_kolicina, datum_narudzbe,vrijeme, id_kupca, id_prodavaca, stanje) "
+				. "VALUES ('".$_SESSION['total']."','".$_SESSION['uk_kol']."','$datum','$vrijeme','".$_SESSION['id_korisnik']."' ,'".$_SESSION['id_prodavac']."', 'zaprimljeno')";
 				if ($mysqli->query($sql)){
-					header("location: artikl.php");
-				}
-		}		
+					if(isset($_SESSION['ubaci'])){
+						$query1 = "SELECT *FROM narudzba WHERE ukupna_cijena ='".$_SESSION['total']."' AND id_kupca = '".$_SESSION['id_korisnik']."' AND id_prodavaca = '".$_SESSION['id_prodavac']."' AND datum_narudzbe = '".$_SESSION['datum']."' AND vrijeme = '".$_SESSION['vrijeme']."'";
+						$result1 = mysqli_query($mysqli, $query1);
+						$user = $result1->fetch_assoc();
+						$_SESSION['id_narudzbe']= $user['id_narudzbe'];
+						foreach($_SESSION["kosarica"] as $key => $value2){
+							$sql2 = "INSERT INTO detalji_narudzbe (id_narudzbe, id_artikla, kolicina_artikala) "
+							. "VALUES ('".$_SESSION['id_narudzbe']."','".$value2["id"]."', '".$value2["kolicina2"]."')";
+						
+						
+						if ($mysqli->query($sql2)){
+							unset($_SESSION['ubaci']);	
+							unset($_SESSION["kosarica"]);
+							header("location: skladiste.php");
+						}
+					}
+						
+					
+					}
+				
+				}	
+					
+	}
+
 	
-		}
+
 ?>
 <!DOCTYPE>
 <html>
@@ -119,6 +139,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 							<?php
 							if(!empty($_SESSION["kosarica"])){
 								$total=	0;
+								$uk_kol=0;
 								foreach($_SESSION["kosarica"] as $key => $value){
 									?>
 									<tr>
@@ -131,21 +152,24 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 										<td><a href="kosarica.php?action=delete&id=<?php echo $value["id"]; ?>"><span>Ukloni artikal</span> <a/></td>
 									</tr>
 									<?php
-									$total = $total + ($value["kolicina2"] * $value["cijena2"]);
+									(double)$total = $total + ($value["kolicina2"] * $value["cijena2"]);
+									(int)$uk_kol += $value["kolicina2"];
 								}
 									?>
 									<tr>
-									<td>Ukupno</td>
+									<th>Ukupno:</th>
+									<th><?php echo $uk_kol; ?> kom</th>
+									<th><?php echo number_format($total, 2); ?> KM</th>
 									<td>
-									<form metod="post" action="kosarica.php">
+									<form method="post" action="kosarica.php">
 									<input type="submit" value="Potvrdi" name="potvrda">
 									
 									</form>
 									</td>
-									<th><?php echo number_format($total, 2); ?> KM</th>
-									<td></td>
 									</tr>
 									<?php
+									$_SESSION['total']=$total;
+									$_SESSION['uk_kol']=$uk_kol;
 								}
 								?>
 							

@@ -11,21 +11,32 @@ $databaseName = "db_delor";
 // connect to mysql
 $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 
-// mysql select query
-if(isset($_SESSION['zap'])){
-	$query1 = "SELECT * FROM narudzba WHERE stanje='zaprimljeno' AND id_prodavaca = '".$_SESSION['id_korisnik']."'";
-}
-if(isset($_SESSION['pot'])){
-	$query1 = "SELECT * FROM narudzba WHERE stanje='potvrdeno' AND id_prodavaca =' ".$_SESSION['id_korisnik']."'";
-}
+$query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_prodavaca = korisnik.id_korisnik  
+AND id_prodavaca =' ".$_SESSION['id_korisnik']." ' AND narudzba.stanje= 'zaprimljeno'  ORDER BY vrijeme DESC ";
 
-if(isset($_SESSION['prod'])){
-	$query1 = "SELECT * FROM narudzba WHERE stanje='prodano' AND id_prodavaca = '".$_SESSION['id_korisnik']."'";
-}
+// // mysql select query
+// if(isset($_SESSION['zap'])){
+// 	$query1 = "SELECT * FROM narudzba WHERE stanje='zaprimljeno' AND id_prodavaca = '".$_SESSION['id_korisnik']."'";
+// }
+// if(isset($_SESSION['pot'])){
+// 	$query1 = "SELECT * FROM narudzba WHERE stanje='potvrdeno' AND id_prodavaca =' ".$_SESSION['id_korisnik']."'";
+// }
+
+// if(isset($_SESSION['prod'])){
+// 	$query1 = "SELECT * FROM narudzba WHERE stanje='prodano' AND id_prodavaca = '".$_SESSION['id_korisnik']."'";
+// }
 
 
-if(!isset($_SESSION['zap'])&&!isset($_SESSION['pot'])&&!isset($_SESSION['prod'])){
-	$query1 = "SELECT * FROM narudzba AND id_prodavaca =' ".$_SESSION['id_korisnik']."'";
+if(isset($_POST['ime_firme'])){
+	$_SESSION['ida']= $_POST['id'];
+	if(isset($_SESSION['zap'])) {
+		header("location: bijelastr.php");
+	}
+	if(isset($_SESSION['pot'])) {
+		header("location: bijelastr.1.php");
+	}if(isset($_SESSION['prod'])) {
+		header("location: bijelastr.2.php");
+	}
 }
 
 
@@ -33,27 +44,25 @@ if(isset($_POST['zap'])) {
 	$_SESSION['zap']=$_POST['zap'];
 	if(isset($_SESSION['pot'])) unset($_SESSION['pot']);
 	if(isset($_SESSION['prod'])) unset($_SESSION['prod']);
-	$query1 = "SELECT * FROM narudzba WHERE stanje='zaprimljeno' AND id_prodavaca =' ".$_SESSION['id_korisnik']." '";
+	$query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_prodavaca = korisnik.id_korisnik  
+	AND id_prodavaca =' ".$_SESSION['id_korisnik']." ' AND narudzba.stanje= 'zaprimljeno'  ORDER BY vrijeme DESC ";
 }elseif(isset($_POST['pot'])){
 	$_SESSION['pot']=$_POST['pot'];
 	if(isset($_SESSION['zap'])) unset($_SESSION['zap']);
 	if(isset($_SESSION['prod'])) unset($_SESSION['prod']);
-	$query1 = "SELECT * FROM narudzba WHERE stanje='potvrdeno' AND id_prodavaca = '".$_SESSION['id_korisnik']."'";
+	$query1 = "SELECT * FROM narudzba WHERE stanje='potvrdjeno' AND id_prodavaca = '".$_SESSION['id_korisnik']."'";
 }elseif(isset($_POST['prod'])){
 	$_SESSION['prod']=$_POST['prod'];
 	if(isset($_SESSION['zap'])) unset($_SESSION['zap']);
 	if(isset($_SESSION['pot'])) unset($_SESSION['pot']);
 	$query1 = "SELECT * FROM narudzba WHERE stanje='prodano' AND id_prodavaca =' ".$_SESSION['id_korisnik']."'";
 }
-// result for method one
-$_SESSION['id_kupca']= $query1['id_kupca'];
-
-if(isset($_SESSION['ime_firme'])){
-	$query2 = "SELECT * FROM korisnik WHERE id_korisnik = '".$_SESSION['id_kupca']."'";
-}
-
 $result1 = mysqli_query($connect, $query1);
-$result2 = mysqli_query($connect, $query2);
+
+	
+	
+
+
 ?>
 <!DOCTYPE>
 <html>
@@ -103,7 +112,7 @@ $result2 = mysqli_query($connect, $query2);
 								<a id="ikona" href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></i></a>
   							</div>
 					</div>
-        ž
+        
                 </div>
 			
                 <div class="col-9 boja2">
@@ -124,18 +133,30 @@ $result2 = mysqli_query($connect, $query2);
 							</form>
 						 </ul>
 						 <ul class="nav navbar-nav navbar-toggler-right">
-             				<li class="nav-item option"><a class="nav-link" href="#">Uredi profil</a></li>
+             				<li class="nav-item option"><a class="nav-link" href="urediprofil.php">Uredi profil</a></li>
              			</ul>
 		 			</div>
 				</nav>
 				<div class="row">
-				<table class="table">
+				<table class="table" cellpadding="1">
   					<tbody>
-					  <?php while($korisnik = mysqli_fetch_array($result2)):;?>	
+					  <?php while($korisnik = mysqli_fetch_array($result1)):
+						$query2 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_kupca = korisnik.id_korisnik AND id_narudzbe = '".$korisnik['id_narudzbe']."'";
+						$result2 = mysqli_query($connect, $query2);
+						$korisnik2 = mysqli_fetch_array($result2);
+					
+						?>	
 					 <tr>
-						<form method="post" action="bijelastr.php?action=add&id=<?php echo $korisnik["ime_firme"]?>">
-							<td><input type="submit" name="ime_firme" value="<?php echo $korisnik['ime_firme'];?>">
-							</td>
+					
+						<form method="post" action="moj_profil.php">
+							<td>
+							<div class="btn">
+							<input type="hidden" name="id" value="<?php echo $korisnik2['id_narudzbe'];?>">
+							<input type="submit" name="ime_firme" style="color: white; background-color: transparent;
+							 border-color: transparent; cursor: default;" value="<?php echo $korisnik2['ime_firme'];?>                       <?php echo $korisnik2['datum_narudzbe'];?>" >
+							 </div>
+							 </td>
+
 						</form>
 					</tr>
 

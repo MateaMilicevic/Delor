@@ -20,6 +20,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if ( $result->num_rows > 0 ) {
 			$_SESSION['message'] = 'Korisnik s ovom e-mail adresom već postoji!';
 			header("location: poruka.php"); //Dodaj alert $_SESSION['message']
+		}else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				$_SESSION['message'] = 'Unjeli ste pogrešnu e-mail adresu!';
+			
 		} else if($_POST['lozinka'] != $_POST['lozinkaa']){
 			$_SESSION['message'] = "Lozinke se ne podudaraju!";
 			header("location: poruka.php"); //Dodaj alert $_SESSION['message']
@@ -32,6 +35,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 
 	}
+
 }
 $_SESSION['korime'] = $korime;
 ?>
