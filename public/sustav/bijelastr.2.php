@@ -92,6 +92,7 @@ if(isset($_POST['potvrdjeno'])){
 		</div>
 		
 			<button onclick="myFunction()">Print this page</button>
+			<a href="moj_profil.php">Natrag</a>
 	</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="../../src/js/tether.min.js" type="text/javascript"></script>

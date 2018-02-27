@@ -92,6 +92,7 @@ if(isset($_POST['potvrdjeno'])){
 		</div>
 		<form method="post" action="bijelastr.php">
 		<input type="submit" value="Prihvati narudžbu" name="potvrdjeno">
+		<a href="moj_profil.php">Natrag</a>
 		</form>
 			
 	</div>

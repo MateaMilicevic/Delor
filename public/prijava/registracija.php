@@ -21,7 +21,7 @@
 					<input type="text" placeholder="Prezime" name="prezime" required><br>
 					<input type="text" pattern="[^ @]*@[^ @]*" placeholder="E-mail" name="email" required><br>
 					<input type="text" placeholder="Korisničko ime" name="korime" required>
-					<input type="number" placeholder="Broj telefona" name="telbroj" required>
+					<input type="text" placeholder="Broj telefona" name="telbroj" required>
 					<input type="password" placeholder="Lozinka" name="lozinka" required>
 					<input type="password" placeholder="Potvrdite lozinku" name="lozinkaa" required>
 					<input type="radio" value="kupac" name="uloga">Kupac

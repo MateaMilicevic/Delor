@@ -1,3 +1,19 @@
+<?php
+session_start();
+require 'db.php';
+$query = "SELECT * FROM korisnik WHERE id_korisnik = '".$_SESSION['id_korisnik']."'";
+$result = mysqli_query($mysqli, $query);
+$korisnik = mysqli_fetch_array($result);
+echo $_SESSION['id_korisnik'];
+
+if(isset($_POST['Izmjenite_profil'])){
+	$sql = "UPDATE korisnik SET ime ='".$_POST['ime']."' WHERE id_korisnik = '".$_SESSION['id_korisnik']."' ";
+	if ($mysqli->query($sql)){
+		header("location: moj_profil.php");
+	}
+}
+?>
+
 <!DOCTYPE>
 <html>
 <head>
@@ -12,18 +28,20 @@
     <div class="naslov"><h1>Moj profil</h1></div>
 	<div class="kontenjer">
          <div class="okvir">
-				<form method="post" action="registriraj.php">
-                    <input type="text" placeholder="Ime" name="ime" required>  
-                    <input type="text" placeholder="Prezime" name="prezime" required><br>
-                    <input type="text" placeholder="Korisničko ime" name="korime" required>
-					<input type="text" placeholder="Broj telefona" name="telbroj" required>
-                    <input type="text" placeholder="E-mail" name="email" required><br>
-					<input type="text" placeholder="Ime firme" name="ime_firme" required>
-					<input type="text" placeholder="Faks" name="faks" required>
-					<input type="text" placeholder="Adresa" name="adresa" required>
-					<input type="text" placeholder="Grad" name="grad" required>
-					<input type="text" placeholder="Država" name="drzava">
-					<input type="text" placeholder="Poštanski broj" name="postanski_broj"><br>
+				<form method="post" action="urediprofil.php">
+                    <span>Ime: </span><input type="text" value="<?php echo $korisnik['ime'] ?>" name="ime" required ><br>
+                    <span>Prezime: </span><input type="text" value="<?php echo $korisnik['prezime'] ?>" name="prezime" required><br>
+                    <span>Korisnicko ime: </span><input type="text" value="<?php echo $korisnik['korisnicko_ime'] ?>" name="korime" required><br>
+					<span>Broj telefona: </span><input type="text" value="<?php echo $korisnik['broj_telefona'] ?>" name="telbroj" required><br>
+                    <span>Email: </span><input type="text" value="<?php echo $korisnik['email'] ?>" name="email" required><br>
+					<span>Ime: </span><input type="text" value="<?php echo $korisnik['ime_firme'] ?>" name="ime_firme" required><br>
+					<span>Ime: </span><input type="text" value="<?php echo $korisnik['faks'] ?>" name="faks" required><br>
+					<span>Ime: </span><input type="text" value="<?php echo $korisnik['adresa'] ?>" name="adresa" required><br>
+					<span>Ime: </span><input type="text" value="<?php echo $korisnik['grad'] ?>" name="grad" required><br>
+					<span>Ime: </span><input type="text" value="<?php echo $korisnik['drzava'] ?>" name="drzava"><br>
+					<span>Ime: </span><input type="text" value="<?php echo $korisnik['postanski_broj'] ?>" name="postanski_broj"><br>
+
+					<input type="submit" value="Izmjenite profil"  name="Izmjenite_profil">
                     <br>
 				</form>
 			</div>

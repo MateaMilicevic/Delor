@@ -10,7 +10,11 @@ $databaseName = "db_delor";
 
 // connect to mysql
 $connect = mysqli_connect($hostname, $username, $password, $databaseName);
-
+if(!isset($_POST['ime_firme'])){
+$query3 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_kupca = korisnik.id_korisnik ";
+$result3 = mysqli_query($connect, $query3);
+$korisnik2 = mysqli_fetch_array($result3);
+}
 $query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_prodavaca = korisnik.id_korisnik  
 AND id_prodavaca =' ".$_SESSION['id_korisnik']." ' AND narudzba.stanje= 'zaprimljeno'  ORDER BY vrijeme DESC ";
 
