@@ -28,21 +28,26 @@
 			<div id="iscezavanjek">
 			</div>
 		</div>
-		<div class="row no-gutters">
-			<div class="col-9 boja2">
-				<nav id="myNavbar2" class="navbar sticky-top navbar-toggleable-md navbar-light bg-faded">
-						<button class="navbar-toggler navbar-toggler-center" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-					<div class="navbar-collapse collapse" >
-						<ul class="nav navbar-nav navbar-left">
-							<li class="nav-item option"><a class="nav-link" href="#">Novi</a></li>
-							<li class="nav-item option"><a class="nav-link " href="">Zaprimljeno</a></li>
-							<li class="nav-item option"><a class="nav-link " href="">Prodano</a></li>
-						</ul>
-					</div>
-				</nav>
-			</div>	
+		<div id="ostatak" class="row">
+		<div class="row">
+				<table class="table">
+  					<tbody>
+					  <?php while($korisnik = mysqli_fetch_array($result2)):;?>	
+					 <tr>
+						<form method="post" action="bijelastr.php?action=add&id=<?php echo $korisnik["ime_firme"]?>">
+							<td><input type="submit" name="ime_firme" value="<?php echo $korisnik['ime_firme'];?>">
+							</td>
+						</form>
+					</tr>
+
+            
+			<?php endwhile;?>			
+					  	
+				</table>
+			
+			</div>
+        		</div>
+               
 		</div>
 	</div>
 

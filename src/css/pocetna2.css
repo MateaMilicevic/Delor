@@ -1,15 +1,21 @@
 html, body{
     margin: 0;
     padding: 0;
+    background-color: rgb(207,209,221);
+    
+  
+
 }
 
 .container-fluid {
     margin: 0!important;
     padding: 0!important;
+
 }
 
 .row {
   margin: 0!important;
+ 
 }
 
 #myNavbar{
@@ -30,13 +36,7 @@ html, body{
 #navbarResponsive > ul {
   min-height: 50px;
 }
-#myNavbar2{
-  min-height: 50px;
-  background: #22313f !important;
-  opacity: 0.8;
-  width: 100%;
-  transition: .5s ease;
-}
+
 
 
 .nav-link {
@@ -69,18 +69,15 @@ html, body{
   background-image: linear-gradient(to top, transparent 0%, white 100%);
 }
 
-#boja2{
-  background-color: rgb(207,209,221);
-  min-height: 100vh;
+#ostatak{
+  height:100%;
+  width: 100%;
+
 }
 
-#tekst p{
-  color: #22313f;
-  font-size: 18;
-  font-family: Verdana, "Geneva", Tahoma, sans-serif;
-  line-height: 30px;
-  padding: 40px;
-}
+
+
+
 
 
 
