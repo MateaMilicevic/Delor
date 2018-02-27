@@ -17,7 +17,7 @@
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
 				<li class="nav-item option"><a class="nav-link" href="kosarica.php">Košarica</a></li>
-				<li class="nav-item option"><a class="nav-link" href="profil.php">Skladišta</a></li>
+				<li class="nav-item option"><a class="nav-link" href="kupac/skladiste.php">Skladišta</a></li>
 				<li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
 			</ul>
 		</div>
