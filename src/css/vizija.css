@@ -1,9 +1,39 @@
-body{
-    background-color:#22313f ;
-    
+html, body{
+    margin: 0;
+    padding: 0;
+    background-color: #22313f!important;
+}
+#myNavbar{
+    min-height: 50px;
+    background: #22313f !important;
+    opacity: 0.8;
+    padding: 0!important;
+    transition: .5s ease;
 }
 
-   
+.navbar-toggler{
+    outline: none !important;
+    border: none !important;
+    margin-top: 6px!important;
+}
+
+#navbarResponsive > ul {
+    min-height: 50px;
+    font-size: 15px;
+}
+
+.nav-link {
+    color: #FFF!important;
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    padding: 0 15px ;
+}
+
+.nav-item:hover{
+    background: rgba(255, 255, 255, 0.3)!important;
+}
+
 
 .kontenjer{
     width: 70%;
