@@ -3,8 +3,9 @@ session_start();
 require 'db.php';
 
 if (isset($_POST["drop"])){
-	$id= $_POST['id'];
-	$sql="DELETE  FROM artikal WHERE id_artikla=$id";
+	$_SESSION['id']= $_POST['id'];
+	$id= $_SESSION['id'];
+	$sql="DELETE FROM `artikal` WHERE `id_artikla`=0";
 	if ($mysqli->query($sql)){
 	header("location: brisanjeartikala.php");
 	}
@@ -153,7 +154,7 @@ $result1 = mysqli_query($mysqli, $query1);
 				<td><?php echo $artikal['dostupnost'];?></td>
                 <td><div class="btn">
                        
-                            <input type="text" name="kolicina" value="1" size="1" class="demo-input-box">
+                            
                             <input type="submit"  value="Brisanje" name="drop">
                         
                     </div></td>
