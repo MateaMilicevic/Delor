@@ -18,8 +18,8 @@ $result1 = mysqli_query($mysqli, $query1);
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>DelOr</title>
-	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/pocetna2.css">
+	<link rel="stylesheet" type="text/css" media="all" href="../../../src/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" media="all" href="../../../src/css/pocetna2.css">
 </head>
 <body>
 	<nav id="myNavbar" class="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
@@ -30,8 +30,8 @@ $result1 = mysqli_query($mysqli, $query1);
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
 				<li class="nav-item option"><a class="nav-link" href="kosarica.php">Košarica</a></li>
-				<li class="nav-item option"><a class="nav-link" href="profil.php">Skladišta</a></li>
-				<li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
+				<li class="nav-item option"><a class="nav-link" href="pocetna2.php">Skladišta</a></li>
+				<li class="nav-item option"><a class="nav-link" href="../../prijava/odjava.php">Odjava</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -51,13 +51,13 @@ $result1 = mysqli_query($mysqli, $query1);
 			?>
 		
 		
-			<form method="post" action="pocetna2.php">
+			<form method="post" action="skladiste.php">
 				<div class="Leo">
 					<div class="btn">
 	
 					<input type="submit" name="ime_firme" style="color: rgb(207,209,221) ; font-size:60 ;  background-color: transparent;
 					border-color: transparent;  cursor: default;" value="<?php echo $korisnik['ime_firme'];?> " >
-					<input type="hidden" name="id_korisnika" value=" <?php echo $korisnik['id_korisnik'];?> "  >
+					<input type="hidden" name="id_korisnik" value=" <?php echo $korisnik['id_korisnik'];?> "  >
 					
 				</div>
 				</div>
@@ -76,9 +76,9 @@ $result1 = mysqli_query($mysqli, $query1);
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="../../src/js/tether.min.js" type="text/javascript"></script>
-	<script src="../../src/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="../../src/js/index.js" type="text/javascript"></script>
+	<script src="../../../src/js/tether.min.js" type="text/javascript"></script>
+	<script src="../../../src/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../../../src/js/index.js" type="text/javascript"></script>
 
 </body>
 </html>

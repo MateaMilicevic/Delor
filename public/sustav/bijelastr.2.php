@@ -1,24 +1,13 @@
 <?php
 session_start();
 require 'db.php';
-
-
-
-
-
-	$query1 = "SELECT * FROM narudzba, detalji_narudzbe, artikal WHERE narudzba.id_narudzbe = detalji_narudzbe.id_narudzbe
-		AND detalji_narudzbe.id_artikla = artikal.id_artikla AND narudzba.id_narudzbe= '".$_SESSION["ida"]."'";
-    $result1 = mysqli_query($mysqli, $query1);
-  
+unset($_SESSION['prod']);
 
 $ida= $_SESSION['ida'];
-if(isset($_POST['potvrdjeno'])){
-	$sql = "UPDATE narudzba SET stanje ='prodano' WHERE id_narudzbe = '$ida' ";
+$query1 = "SELECT * FROM arhiv WHERE id_narudzbe = '$ida'";
+$result1 = mysqli_query($mysqli, $query1);
+$result2 = mysqli_query($mysqli, $query1);
 
-	if ($mysqli->query($sql)){
-		header("location: moj_profil.php");
-	}
-}
 
 ?>
 
@@ -53,11 +42,20 @@ if(isset($_POST['potvrdjeno'])){
 			<div class="col-8" >
 				<table class="table" width="100%">
 						<tbody>
+							<?php $value2 = mysqli_fetch_array($result2) ?>
 						<tr>
 						<th>Broj narudzbe:</th>
 						<td><?php echo$_SESSION['ida'] ;?></td>
-						</tr>
 						
+						</tr>
+						<tr>
+							<th>Prodavac:</th>
+								<td><?php echo $value2['ime_firme_prodavaca'] ;?></td>
+								<th>Kupac:</th>
+								<td><?php echo $value2['ime_firme_kupca'] ;?></td>
+							
+							</tr>
+
 							<tr>
 								<th>#</th>
 								<th>Naziv</th>
@@ -65,34 +63,48 @@ if(isset($_POST['potvrdjeno'])){
 								<th>Kolicina</th>
 								<th>Ukupna cijena </th>
 							</tr>
-						<?php while($value = mysqli_fetch_array($result1)):;?>	
+							<?php while($value = mysqli_fetch_array($result1)):;?>
 							<tr>
 								<td><?php echo $value["id_artikla"]; ?></td>
 								<td><?php echo $value["naziv"]; ?></td>
 								<td><?php echo $value["cijena"]; ?> KM</td>
-								<td><?php echo $value["kolicina_artikala"]; ?></td>
-								<td><?php echo number_format($value["kolicina_artikala"] * $value["cijena"], 2); ?> KM</td>
+								<td><?php echo $value["kolicina_artikla"]; ?></td>
+								<td><?php echo number_format($value["kolicina_artikla"] * $value["cijena"], 2); ?> KM</td>
 							</tr>
 							<?php $_SESSION['cijena']=$value["ukupna_cijena"];
 								  $_SESSION['kolicina']=$value["ukupna_kolicina"]; ?>
-						<?php endwhile;?>
 						
-									<tr>
+						<?php endwhile;?>
+								<tr>
 									<th>Ukupno:</th>
 									<th></th>
 									<th></th>
 									
 									<th><?php echo   $_SESSION['kolicina']; ?> kom</th>
 									<th><?php echo $_SESSION['cijena']; ?> KM</th>
-									<td>
-
+								</tr>
+								<tr>
+								<th>Datum narudzbe:</th>
+								<td><?php echo $value2['datum_narudzbe'] ;?></td>
+								<th>Datum dostave:</th>
+								<td><?php echo $value2['datum_dostave'] ;?></td>
+							</tr>
+							
+							
 				</table>
 			</div>
 
 		</div>
-		
-			<button onclick="myFunction()">Print this page</button>
-			<a href="moj_profil.php">Natrag</a>
+		<div>
+		</div>
+		<div style="margin: auto 0; text-align: center;">			
+		<br>
+		<br>
+		<br>
+		<br>
+			<button onclick="myFunction()" style="width: 300px; margin: auto 0; text-align: center;">Print this page</button>
+			<a href="moj_profil.php?izbor_3=<?$_SESSION['prod']?>" style="padding-left: 50px;">Natrag</a>
+	</div>
 	</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="../../src/js/tether.min.js" type="text/javascript"></script>

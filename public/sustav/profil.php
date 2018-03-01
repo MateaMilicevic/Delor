@@ -2,6 +2,11 @@
 session_start();
 require 'db.php';
 
+// Ako su pokrenute sesije u mom profilu da ih vracanjem na skladiste ugasimo
+if(isset($_SESSION['zap'])) unset($_SESSION['zap']);
+if(isset($_SESSION['prod'])) unset($_SESSION['prod']);
+if(isset($_SESSION['pot'])) unset($_SESSION['pot']);
+
 
 $hostname = "localhost";
 $username = "root";
@@ -26,10 +31,10 @@ if(isset($_POST['TN'])) {
 	$query1 = "SELECT * FROM artikal WHERE tip='Negazirana pica' AND id_korisnik = '".$_SESSION['id_korisnik']."'";
 }
 // result for method one
-$result1 = mysqli_query($connect, $query1);
+$result1 = mysqli_query($mysqli, $query1);
 
 // result for method two 
-$result2 = mysqli_query($connect, $query2);
+$result2 = mysqli_query($mysqli, $query2);
 
 
 
