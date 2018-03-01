@@ -2,6 +2,7 @@
 <?php
 
 session_start();
+require 'db.php';
 // php populate html table from mysql database
 $hostname = "localhost";
 $username = "root";
@@ -61,11 +62,6 @@ if(isset($_POST['zap'])) {
 	if(isset($_SESSION['pot'])) unset($_SESSION['pot']);
 	$query1 = "SELECT * FROM narudzba WHERE stanje='prodano' AND id_prodavaca =' ".$_SESSION['id_korisnik']."'";
 }
-$result1 = mysqli_query($connect, $query1);
-
-	
-	
-
 
 ?>
 <!DOCTYPE>
@@ -105,13 +101,12 @@ $result1 = mysqli_query($connect, $query1);
 		        <div class="col-3 boja1">
                     <h2><?php echo ($_SESSION['korime'])?></h2>
 					<div class="card">
-  						<img src="../../src/img/avatar.png" alt="Avatar" style="width:100%">
-  							<div class="container">
-    							<h4><b><?php echo ($_SESSION['ime'])?> <?php echo ($_SESSION['prezime'])?></b></h4> 
+    						<h4><b><?php echo ($_SESSION['ime'])?> <?php echo ($_SESSION['prezime'])?></b></h4> 
    								 <p>
 									<?php echo ($_SESSION['ime_firme'])?><br>
 									<?php echo ($_SESSION['adresa']) ?><br>
 									<?php echo ($_SESSION['broj_telefona']) ?>
+									
 								</p> 
 								<a id="ikona" href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></i></a>
   							</div>

@@ -7,7 +7,14 @@ $korisnik = mysqli_fetch_array($result);
 echo $_SESSION['id_korisnik'];
 
 if(isset($_POST['Izmjenite_profil'])){
-	$sql = "UPDATE korisnik SET ime ='".$_POST['ime']."' WHERE id_korisnik = '".$_SESSION['id_korisnik']."' ";
+	$sql = "UPDATE korisnik SET ime ='".$_POST['ime']."',prezime ='".$_POST['prezime']."',ime_firme ='".$_POST['ime_firme']."',broj_telefona ='".$_POST['telbroj']."',faks ='".$_POST['faks']."',email ='".$_POST['email']."',grad ='".$_POST['grad']."',
+	drzava ='".$_POST['drzava']."',grad ='".$_POST['grad']."',postanski_broj ='".$_POST['postanski_broj']."',korisnicko_ime ='".$_POST['korime']."',adresa ='".$_POST['adresa']."' WHERE id_korisnik = '".$_SESSION['id_korisnik']."' ";
+	$_SESSION['ime']=$_POST['ime'];
+	$_SESSION['prezime']=$_POST['prezime'];
+	$_SESSION['korime']=$_POST['korime'];
+	$_SESSION['ime_firme']=$_POST['ime_firme'];
+	$_SESSION['adresa']=$_POST['adresa'];
+	$_SESSION['broje_telefona']=$_POST['broj_telefona'];
 	if ($mysqli->query($sql)){
 		header("location: moj_profil.php");
 	}
@@ -28,22 +35,22 @@ if(isset($_POST['Izmjenite_profil'])){
     <div class="naslov"><h1>Moj profil</h1></div>
 	<div class="kontenjer">
          <div class="okvir">
-				<form method="post" action="urediprofil.php">
-                    <span>Ime: </span><input type="text" value="<?php echo $korisnik['ime'] ?>" name="ime" required ><br>
-                    <span>Prezime: </span><input type="text" value="<?php echo $korisnik['prezime'] ?>" name="prezime" required><br>
-                    <span>Korisnicko ime: </span><input type="text" value="<?php echo $korisnik['korisnicko_ime'] ?>" name="korime" required><br>
-					<span>Broj telefona: </span><input type="text" value="<?php echo $korisnik['broj_telefona'] ?>" name="telbroj" required><br>
-                    <span>Email: </span><input type="text" value="<?php echo $korisnik['email'] ?>" name="email" required><br>
-					<span>Ime: </span><input type="text" value="<?php echo $korisnik['ime_firme'] ?>" name="ime_firme" required><br>
-					<span>Ime: </span><input type="text" value="<?php echo $korisnik['faks'] ?>" name="faks" required><br>
-					<span>Ime: </span><input type="text" value="<?php echo $korisnik['adresa'] ?>" name="adresa" required><br>
-					<span>Ime: </span><input type="text" value="<?php echo $korisnik['grad'] ?>" name="grad" required><br>
-					<span>Ime: </span><input type="text" value="<?php echo $korisnik['drzava'] ?>" name="drzava"><br>
-					<span>Ime: </span><input type="text" value="<?php echo $korisnik['postanski_broj'] ?>" name="postanski_broj"><br>
+				<p><form method="post" action="urediprofil.php">
+                    <b>Ime:</b>     <input type="text" value="<?php echo $korisnik['ime'] ?>" name="ime" required ><br>
+                    <b>Prezime:</b> <input type="text" value="<?php echo $korisnik['prezime'] ?>" name="prezime" required><br>
+                    <b>Korisnicko ime:</b> <input type="text" value="<?php echo $korisnik['korisnicko_ime'] ?>" name="korime" required><br>
+					<b>Broj telefona:</b> <input type="text" value="<?php echo $korisnik['broj_telefona'] ?>" name="telbroj" required><br>
+					<b>Faks:</b> <input type="text" value="<?php echo $korisnik['faks'] ?>" name="faks" required><br>
+                    <b>Email:</b><input type="text" value="<?php echo $korisnik['email'] ?>" name="email" required><br>
+					<b>Ime firme:</b> <input type="text" value="<?php echo $korisnik['ime_firme'] ?>" name="ime_firme" required><br>
+					<b>Adresa:</b> <input type="text" value="<?php echo $korisnik['adresa'] ?>" name="adresa" required><br>
+					<b>Grad:</b><input type="text" value="<?php echo $korisnik['grad'] ?>" name="grad" required><br>
+					<b>Država</b>: <input type="text" value="<?php echo $korisnik['drzava'] ?>" name="drzava"><br>
+					<b>Poštanski broj:</b> <input type="text" value="<?php echo $korisnik['postanski_broj'] ?>" name="postanski_broj"><br>
 
 					<input type="submit" value="Izmjenite profil"  name="Izmjenite_profil">
                     <br>
-				</form>
+				</form></p>
 			</div>
 		</div> 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

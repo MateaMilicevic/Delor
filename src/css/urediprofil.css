@@ -16,9 +16,10 @@ body
 {
     margin: 0;
     padding: 0;
-    color: darkslategray;
+    color:white;
     text-transform: uppercase;
     font-size: 36px;
+    
 
 }
 .kontenjer
@@ -29,7 +30,9 @@ body
     margin: 0 auto;
     border: 2px solid #fff;
     box-shadow: 0 30px 80px rgba(0,0,0,.5);
-    opacity: .8;
+    opacity: .9;
+    border-radius: 10px;
+    
     
 }
 .okvir 
@@ -39,6 +42,7 @@ body
     box-sizing: border-box;
     height: 900px;
     background: #fff;
+    
 }
 .okvir p
 {
@@ -46,16 +50,17 @@ body
     padding: 0;
     font-weight: bold;
     color: #22313f;
+    font-size: 100px;
 
 }
 .okvir input
 {
-    width: 90%;
+    width: 100%;
     margin-bottom: 10px;
 }
 .okvir input[type="text"]
 {
-    width: 90%;
+  
     border: none;
     border-bottom: 2px solid #22313f;
     outline: none;
@@ -65,6 +70,7 @@ body
 
 {
       border-bottom: 2px solid #262626;
+      width: 5px;
 
 }
 .okvir input[type="submit"]
