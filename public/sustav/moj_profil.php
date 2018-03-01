@@ -1,37 +1,44 @@
 
 <?php
-
 session_start();
-// php populate html table from mysql database
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "db_delor";
-
-// connect to mysql
-$connect = mysqli_connect($hostname, $username, $password, $databaseName);
-if(!isset($_POST['ime_firme'])){
-$query3 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_kupca = korisnik.id_korisnik ";
-$result3 = mysqli_query($connect, $query3);
-$korisnik2 = mysqli_fetch_array($result3);
+require 'db.php';
+unset($_SESSION["artiklic"]);
+// Kada se udje prvi put u stranicu da povuce podatke iz baze
+if(!isset($_SESSION['pot'])&&!isset($_SESSION['zap'])&&!isset($_SESSION['prod'])){
+	// Select za povezivanje trenutno aktivnog skladista/prodavaca sa njegovim narudzbama stanja zaprimljeno
+	$query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_prodavaca = korisnik.id_korisnik  
+		AND id_prodavaca ='".$_SESSION['id_korisnik']."' AND narudzba.stanje= 'zaprimljeno'  ORDER BY id_narudzbe DESC ";
 }
-$query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_prodavaca = korisnik.id_korisnik  
-AND id_prodavaca =' ".$_SESSION['id_korisnik']." ' AND narudzba.stanje= 'zaprimljeno'  ORDER BY vrijeme DESC ";
 
-// // mysql select query
-// if(isset($_SESSION['zap'])){
-// 	$query1 = "SELECT * FROM narudzba WHERE stanje='zaprimljeno' AND id_prodavaca = '".$_SESSION['id_korisnik']."'";
-// }
-// if(isset($_SESSION['pot'])){
-// 	$query1 = "SELECT * FROM narudzba WHERE stanje='potvrdeno' AND id_prodavaca =' ".$_SESSION['id_korisnik']."'";
-// }
-
-// if(isset($_SESSION['prod'])){
-// 	$query1 = "SELECT * FROM narudzba WHERE stanje='prodano' AND id_prodavaca = '".$_SESSION['id_korisnik']."'";
-// }
-
+// Kada se vrsi odabir opcija zaprimljeno, potvrdjeno i naruceno i vrcanje unazad sa bijelih stranica
+if(isset($_POST['zap'])||(isset($_GET['izbor_1']))) {
+	if(isset($_SESSION['pot'])) unset($_SESSION['pot']);
+	if(isset($_SESSION['prod'])) unset($_SESSION['prod']);
+	$query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_prodavaca = korisnik.id_korisnik  
+		AND id_prodavaca =' ".$_SESSION['id_korisnik']." ' AND narudzba.stanje= 'zaprimljeno'  ORDER BY id_narudzbe DESC ";
+	$_SESSION['zap']=1;
+}elseif(isset($_POST['pot'])||(isset($_GET['izbor_2']))){
+	$_SESSION['pot']=2;
+	if(isset($_SESSION['zap'])) unset($_SESSION['zap']);
+	if(isset($_SESSION['prod'])) unset($_SESSION['prod']);
+	$query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_prodavaca = korisnik.id_korisnik  
+		AND id_prodavaca =' ".$_SESSION['id_korisnik']." ' AND narudzba.stanje= 'potvrdjeno'  ORDER BY id_narudzbe DESC ";
+}elseif(isset($_POST['prod'])||(isset($_GET['izbor_3']))){
+	$_SESSION['prod']=3;
+	if(isset($_SESSION['zap'])) unset($_SESSION['zap']);
+	if(isset($_SESSION['pot'])) unset($_SESSION['pot']);
+	$query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_prodavaca = korisnik.id_korisnik  
+		AND id_prodavaca =' ".$_SESSION['id_korisnik']." ' AND narudzba.stanje= 'prodano'  ORDER BY id_narudzbe DESC ";
+}
 
 if(isset($_POST['ime_firme'])){
+	if(!isset($_SESSION['pot'])&&!isset($_SESSION['zap'])&&!isset($_SESSION['prod'])){
+		// Select za povezivanje trenutno aktivnog skladista/prodavaca sa njegovim narudzbama stanja zaprimljeno
+		$query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_prodavaca = korisnik.id_korisnik  
+			AND id_prodavaca =' ".$_SESSION['id_korisnik']." ' AND narudzba.stanje= 'zaprimljeno'  ORDER BY id_narudzbe DESC ";
+		$_SESSION['zap']=1;
+	}
+	// Sesija sa id narudzbe koja se proslijedjuje na bijele stranice
 	$_SESSION['ida']= $_POST['id'];
 	if(isset($_SESSION['zap'])) {
 		header("location: bijelastr.php");
@@ -41,28 +48,9 @@ if(isset($_POST['ime_firme'])){
 	}if(isset($_SESSION['prod'])) {
 		header("location: bijelastr.2.php");
 	}
+	$result1 = mysqli_query($mysqli, $query1);
 }
-
-
-if(isset($_POST['zap'])) {
-	$_SESSION['zap']=$_POST['zap'];
-	if(isset($_SESSION['pot'])) unset($_SESSION['pot']);
-	if(isset($_SESSION['prod'])) unset($_SESSION['prod']);
-	$query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_prodavaca = korisnik.id_korisnik  
-	AND id_prodavaca =' ".$_SESSION['id_korisnik']." ' AND narudzba.stanje= 'zaprimljeno'  ORDER BY vrijeme DESC ";
-}elseif(isset($_POST['pot'])){
-	$_SESSION['pot']=$_POST['pot'];
-	if(isset($_SESSION['zap'])) unset($_SESSION['zap']);
-	if(isset($_SESSION['prod'])) unset($_SESSION['prod']);
-	$query1 = "SELECT * FROM narudzba WHERE stanje='potvrdjeno' AND id_prodavaca = '".$_SESSION['id_korisnik']."'";
-}elseif(isset($_POST['prod'])){
-	$_SESSION['prod']=$_POST['prod'];
-	if(isset($_SESSION['zap'])) unset($_SESSION['zap']);
-	if(isset($_SESSION['pot'])) unset($_SESSION['pot']);
-	$query1 = "SELECT * FROM narudzba WHERE stanje='prodano' AND id_prodavaca =' ".$_SESSION['id_korisnik']."'";
-}
-$result1 = mysqli_query($connect, $query1);
-
+$result1 = mysqli_query($mysqli, $query1);
 	
 	
 
@@ -86,7 +74,7 @@ $result1 = mysqli_query($connect, $query1);
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
 		    <ul class="navbar-nav ml-auto">
-	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
+	          <li class="nav-item option"><span class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</span></li>
               <li class="nav-item option"><a class="nav-link" href="artikl.php">Novi artikal</a></li>
               <li class="nav-item option"><a class="nav-link" href="profil.php">Skladišta</a></li>
 
@@ -105,13 +93,12 @@ $result1 = mysqli_query($connect, $query1);
 		        <div class="col-3 boja1">
                     <h2><?php echo ($_SESSION['korime'])?></h2>
 					<div class="card">
-  						<img src="../../src/img/avatar.png" alt="Avatar" style="width:100%">
-  							<div class="container">
-    							<h4><b><?php echo ($_SESSION['ime'])?> <?php echo ($_SESSION['prezime'])?></b></h4> 
+    						<h4><b><?php echo ($_SESSION['ime'])?> <?php echo ($_SESSION['prezime'])?></b></h4> 
    								 <p>
 									<?php echo ($_SESSION['ime_firme'])?><br>
 									<?php echo ($_SESSION['adresa']) ?><br>
 									<?php echo ($_SESSION['broj_telefona']) ?>
+									
 								</p> 
 								<a id="ikona" href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></i></a>
   							</div>
@@ -145,8 +132,9 @@ $result1 = mysqli_query($connect, $query1);
 				<table class="table" cellpadding="1">
   					<tbody>
 					  <?php while($korisnik = mysqli_fetch_array($result1)):
+					  // Select za povezivanje narudzbi od aktivnog skladista s kupcima koji su poslali narudzbe
 						$query2 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_kupca = korisnik.id_korisnik AND id_narudzbe = '".$korisnik['id_narudzbe']."'";
-						$result2 = mysqli_query($connect, $query2);
+						$result2 = mysqli_query($mysqli, $query2);
 						$korisnik2 = mysqli_fetch_array($result2);
 					
 						?>	

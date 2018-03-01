@@ -3,17 +3,17 @@ session_start();
 require 'db.php';
 
 if (isset($_POST["drop"])){
-	$id= $_POST['id'];
-	$sql="DELETE  FROM artikal WHERE id_artikla=$id";
+	$_SESSION['id']= $_POST['id'];
+	$id= $_SESSION['id'];
+	$sql="DELETE FROM `artikal` WHERE `id_artikla`=0";
 	if ($mysqli->query($sql)){
 	header("location: brisanjeartikala.php");
 	}
 }
 $query1 = "SELECT * FROM artikal WHERE id_korisnik = 15";
 if(!isset($_SESSION['TN'])&&!isset($_SESSION['GP'])&&!isset($_SESSION['AP'])&&!isset($_SESSION['NP'])){
-	$query1 = "SELECT * FROM artikal WHERE id_korisnik = 15";
+	$query1 = "SELECT * FROM artikal WHERE id_korisnik = '".$_POST["id_korisnik"]."'";
 }
-
 
 if(isset($_POST['TN'])) {
 	$_SESSION['TN']=$_POST['TN'];
@@ -40,6 +40,11 @@ if(isset($_POST['TN'])) {
 	if(isset($_SESSION['GP'])) unset($_SESSION['GP']);
 	$query1 = "SELECT * FROM artikal WHERE tip='Negazirana pica' AND id_korisnik = 15";
 }
+if(isset($_POST['ime_firme'])){
+	$_SESSION['korisnik_id']=$_POST['id_korisnik'];
+	$query1 = "SELECT * FROM artikal WHERE id_korisnik = '".$_SESSION['korisnik_id']."'";
+}
+
 // result for method one
 $result1 = mysqli_query($mysqli, $query1);
 
@@ -153,7 +158,7 @@ $result1 = mysqli_query($mysqli, $query1);
 				<td><?php echo $artikal['dostupnost'];?></td>
                 <td><div class="btn">
                        
-                            <input type="text" name="kolicina" value="1" size="1" class="demo-input-box">
+                            
                             <input type="submit"  value="Brisanje" name="drop">
                         
                     </div></td>
