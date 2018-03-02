@@ -16,7 +16,7 @@ if(isset($_POST['Izmjenite_profil'])){
 	$_SESSION['adresa']=$_POST['adresa'];
 	$_SESSION['broje_telefona']=$_POST['broj_telefona'];
 	if ($mysqli->query($sql)){
-		header("location: moj_profil.php");
+		header("location: moj_profil.php?query='1'");
 	}
 }
 ?>

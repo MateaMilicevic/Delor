@@ -62,7 +62,7 @@ $value2 = mysqli_fetch_array($result2);
 		    <ul class="navbar-nav ml-auto">	
 			<li class="nav-item-option nav-link navbar-toggler-center" style="border: 2px solid black; background-color: black;"><h2><?php echo $value2['ime_firme'] ?></h2></li>							
 	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
-
+              <li class="nav-item option"><a class="nav-link" href="artikl.php">Novi artikal</a></li>
 	          <li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
              </ul>
 		  </div>
@@ -124,7 +124,7 @@ $value2 = mysqli_fetch_array($result2);
 	 						<th>Naziv</th>
 	  						<th>Cijena</th>
       						<th>Neto kolicina</th>
-      						<th>Dostupnost</th>
+      						
 							
     					</tr>
 
@@ -137,7 +137,7 @@ $value2 = mysqli_fetch_array($result2);
                 <td><?php echo $artikal['naziv'];?></td>
                 <td><?php echo $artikal['cijena'];?></td>
 				<td><?php echo $artikal['neto_kolicina'];?></td>
-				<td><?php echo $artikal['dostupnost'];?></td>
+				
             </tr>
             
 			<?php endwhile;?>			

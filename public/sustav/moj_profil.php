@@ -4,7 +4,7 @@ session_start();
 require 'db.php';
 unset($_SESSION["artiklic"]);
 // Kada se udje prvi put u stranicu da povuce podatke iz baze
-if(!isset($_SESSION['pot'])&&!isset($_SESSION['zap'])&&!isset($_SESSION['prod'])){
+if(!isset($_SESSION['pot'])&&!isset($_SESSION['zap'])&&!isset($_SESSION['prod'])||(isset($_GET['query']))){
 	// Select za povezivanje trenutno aktivnog skladista/prodavaca sa njegovim narudzbama stanja zaprimljeno
 	$query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_prodavaca = korisnik.id_korisnik  
 		AND id_prodavaca ='".$_SESSION['id_korisnik']."' AND narudzba.stanje= 'zaprimljeno'  ORDER BY id_narudzbe DESC ";
@@ -75,7 +75,7 @@ $result1 = mysqli_query($mysqli, $query1);
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
 		    <ul class="navbar-nav ml-auto">
 	          <li class="nav-item option"><span class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</span></li>
-              <li class="nav-item option"><a class="nav-link" href="artikl.php">Novi artikal</a></li>
+
               <li class="nav-item option"><a class="nav-link" href="profil.php">Skladišta</a></li>
 
 	          <li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>

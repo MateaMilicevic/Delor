@@ -25,7 +25,7 @@
                     <input type="text" placeholder="Naziv artikla" name="naziv_artikla" required><br>
 					<input type="text" placeholder="Neto količina" name="neto_kolicina" required><br>
 					<input type="text" placeholder="Cijena" name="cijena" required><br>
-					<input type="text" placeholder="Dostupnost" name="dostupnost" required><br>
+					
 					<input type="submit" value="Potvrdi" name="potvrda">
             </form>
         </div>
