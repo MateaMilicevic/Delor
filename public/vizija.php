@@ -77,26 +77,14 @@
         <tbody>
           <tr>
             <td>Kupac</td>
-            <td>Koristi sustav za online narudžbu, ima uvid u osnovne podatke o proizvodima te ima uvid u osnovne informacije o tvrtki</td>
+            <td>Koristi sustav za online narudžbu, ima uvid u sve podatke o proizvodima te ima uvid u osnovne informacije o tvrtki</td>
             <td>Pruža osnovne informacije sustavu te ima mogućnost ažuriranja tih podataka</td>
             <td>„Delor“ d.o.o. Mostar</td>
           </tr>
           <tr>
-            <td>Trgovina</td>
+            <td>Prodavač</td>
             <td>Ima uvid u sve podatke o proizvodima te ima uvid u osnovne informacije o tvrtki</td>
             <td>Mogućnost dodavanja i brisanja proizvoda te mogućnost ažuriranja osobnih podataka</td>
-            <td>„Delor“ d.o.o. Mostar</td>
-          </tr>
-          <tr>
-            <td>Direktor</td>
-            <td>Ima uvid u osnovne podatke o proizvodima te ima uvid u sve informacije o tvrtki</td>
-            <td>Mogućnost ažuriranja informacija o tvrtci te ima uvid u poslovanje tvrtke i ima mogućnost ažuriranja osobnih podataka</td>
-            <td>„Delor“ d.o.o. Mostar</td>
-          </tr>
-          <tr>
-            <td>Moderator</td>
-            <td>Ima uvid u sve informacije pohranjene u bazi podataka  te vodi računa o radu samog sustava</td>
-            <td>Mogućnost ažuriranja svih podataka u bazi podataka, dodavanje i brisanje novih korisnika</td>
             <td>„Delor“ d.o.o. Mostar</td>
           </tr>
           <tr>
