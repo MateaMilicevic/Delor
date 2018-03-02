@@ -34,7 +34,9 @@ if(isset($_POST['TN'])) {
 $result1 = mysqli_query($mysqli, $query1);
 
 // result for method two 
+$query2 = "SELECT * FROM korisnik WHERE id_korisnik = '".$_SESSION['id_korisnik']."'";
 $result2 = mysqli_query($mysqli, $query2);
+$value2 = mysqli_fetch_array($result2);
 
 
 
@@ -57,10 +59,9 @@ $result2 = mysqli_query($mysqli, $query2);
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
-		    <ul class="navbar-nav ml-auto">
+		    <ul class="navbar-nav ml-auto">	
+			<li class="nav-item-option nav-link navbar-toggler-center" style="border: 2px solid black; background-color: black;"><h2><?php echo $value2['ime_firme'] ?></h2></li>							
 	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
-              <li class="nav-item option"><a class="nav-link" href="artikl.php">Novi artikal</a></li>
-              <li class="nav-item option"><a class="nav-link" href="profil.php">Skladišta</a></li>
 
 	          <li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
              </ul>

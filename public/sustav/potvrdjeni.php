@@ -138,7 +138,7 @@ if(isset($_POST['potvrdjeno'])){
 							
 							;?>	
 						<tr>
-							<form method="post" action="bijelastr.1.php?action=add&id=<?php echo $value1["id_artikla"]?>" style="padding-right: 100px; margin: auto 0; text-align: center;" >
+							<form method="post" action="potvrdjeni.php?action=add&id=<?php echo $value1["id_artikla"]?>" style="padding-right: 100px; margin: auto 0; text-align: center;" >
 							<input type="hidden" name="id" value="<?php echo $value1["id_artikla"];?>">
 								<td><input type="hidden" name="idar" value="<?php echo $value1["id_artikla"];?>"><?php echo $value1["id_artikla"]; ?></td>
 								<td><input type="hidden" name="naziv" value="<?php echo $value1["naziv"];?>"><?php echo $value1["naziv"]; ?></td>

@@ -52,7 +52,7 @@ $result1 = mysqli_query($mysqli, $query1);
 		
 		
 			<form method="post" action="skladiste.php">
-				<div class="Leo">
+				<div class="forma">
 					<div class="btn">
 	
 					<input type="submit" name="ime_firme" style="color: rgb(207,209,221) ; font-size:60 ;  background-color: transparent;
