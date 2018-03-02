@@ -3,8 +3,14 @@
 session_start();
 require 'db.php';
 // php populate html table from mysql database
-
-
+if (isset($_POST["drop"])){
+	$_SESSION['id']= $_POST['id_korisnika'];
+	$id= $_SESSION['id'];
+	$sql="DELETE  FROM `korisnik` WHERE `id_korisnik`='$id'";
+	if ($mysqli->query($sql)){
+	header("location: urediprofil_a.php");
+	}
+}
 $query1 = "SELECT * FROM korisnik ";
 
 
@@ -29,7 +35,7 @@ $result1 = mysqli_query($mysqli, $query1);
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
 		    <ul class="navbar-nav ml-center">
-	          <li class="nav-item option"><a class="nav-link" href="#about">Natrag</a></li>
+	          <li class="nav-item option"><a class="nav-link" href="pocetna_admin.php">Natrag</a></li>
 		    </ul>
 		  </div>
 		</nav>
@@ -48,7 +54,7 @@ $result1 = mysqli_query($mysqli, $query1);
 							<th>ID korisnika</th>
 							<th>Ime korisnika</th>
 							<th>Ime firme</th>
-							<th> Odabit</th>
+							<th> Odabir</th>
 						</tr>
 					</thead>
 					<tbody>	
@@ -59,15 +65,20 @@ $result1 = mysqli_query($mysqli, $query1);
 								<td><input type="hidden" name="id_korisnika" value=" <?php echo $korisnik['id_korisnik'];?> ">  <?php echo $korisnik['id_korisnik'];?></td>
 								<td><input type="hidden" name="korisnicko_ime" value=" <?php echo $korisnik['id_korisnik'];?> ">  <?php echo $korisnik['korisnicko_ime'];?></td>
 								<td><input type="hidden" name="ime_firme" value=" <?php echo $korisnik['id_korisnik'];?> ">  <?php echo $korisnik['ime_firme'];?></td>
+								<td><div class="btn">
+									 <input type="submit"  value="Brisanje korisnika" name="drop">
+				   				</div></td>
 							</form>
 						</tr>
 						<?php endwhile;?>
 					</tbody>
 				</table>
 			</div>
-			
-		
-            
-        </div>
-        </div>	
-</div>
+			</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="../../src/js/tether.min.js" type="text/javascript"></script>
+	<script src="../../src/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../../src/js/index.js" type="text/javascript"></script>
+
+</body>
+</html>

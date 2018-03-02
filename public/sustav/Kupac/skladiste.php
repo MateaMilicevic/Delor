@@ -5,12 +5,11 @@ require 'db.php';
 
 if(isset($_POST['ime_firme'])){
 $_SESSION['korisnik_id']=$_POST['id_korisnik'];
+}
 $query1 = "SELECT * FROM artikal WHERE id_korisnik = '".$_SESSION['korisnik_id']."'";
 
-if((!isset($_SESSION['TN']))&&(!isset($_SESSION['GP']))&&(!isset($_SESSION['AP']))&&(!isset($_SESSION['NP']))){
-	$query1 = "SELECT * FROM artikal WHERE id_korisnik = '".$_SESSION['korisnik_id']."'";
-}
-}
+
+
 if(isset($_SESSION['TN'])){
 		$query1 = "SELECT * FROM artikal WHERE tip='Topli napitci' AND id_korisnik = '".$_SESSION['korisnik_id']."'";
 	}
@@ -88,7 +87,7 @@ $result1 = mysqli_query($mysqli, $query1);
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
 		    <ul class="navbar-nav ml-auto">
-	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
+	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php?query='1'">Moj profil</a></li>
 			  <li class="nav-item-option nav-link navbar-toggler-center" style="border: 2px solid black; background-color: black;"><h2><?php echo $_SESSION['ime_firme_prodavaca'] ?></h2></li>
               <li class="nav-item option"><a class="nav-link" href="kosarica.php">Košarica</a></li>
               <li class="nav-item option"><a class="nav-link" href="pocetna2.php">Skladišta</a></li>

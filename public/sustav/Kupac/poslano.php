@@ -10,21 +10,21 @@ $ida= $_SESSION['ida'];
 
 if(isset($_POST['potvrdjeno'])){
 	$_SESSION['datum']=$_POST['datum'];
-	$sql = "UPDATE narudzba SET stanje ='potvrdjeno' WHERE id_narudzbe = '$ida' ";
+	$sql = "UPDATE narudzba SET stanje ='zaprimljeno' WHERE id_narudzbe = '$ida' ";
 	$mysqli->query($sql);
 		if(isset($_POST['datum'])){
 			$_SESSION['datum']=$_POST['datum'];
 			$datum=$_POST['datum'];
 			$sql = "UPDATE narudzba SET datum_dostave ='$datum' WHERE id_narudzbe = '$ida' ";
 			if ($mysqli->query($sql)){
-				header("location: moj_profil.php?izbor_1='".$_SESSION['zap']."'");
+				header("location: moj_profil.php?izbor_1='".$_SESSION['pos']."'");
 			}
 	}
 }
 if(isset($_POST['odbijeno'])){
 	$sql = "UPDATE narudzba SET stanje ='zaprimljeno' WHERE id_narudzbe = '$ida' ";
 	if ($mysqli->query($sql)){
-		header("location: moj_profil.php?izbor_1='".$_SESSION['zap']."'");
+		header("location: moj_profil.php?izbor_1='".$_SESSION['pos']."'");
 	}
 }
 ?>
@@ -35,7 +35,7 @@ if(isset($_POST['odbijeno'])){
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" media="all" href="../../src/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" media="all" href="../../../src/css/bootstrap.min.css">
 	<script>
 		function myFunction() {
    	 		window.print();
@@ -51,7 +51,7 @@ if(isset($_POST['odbijeno'])){
 
 		<div  style="text-align: center;">
 		<br>
-				<h2>Popis svih zaprimljenih artikala<h2><br><br>
+				<h2>Popis svih poslanih artikala<h2><br><br>
 
 		</div>
 		<div  id="row no-gutters" class="d-flex justify-content-center">
@@ -79,7 +79,9 @@ if(isset($_POST['odbijeno'])){
 								<td><?php echo number_format($value["kolicina_artikala"] * $value["cijena"], 2); ?> KM</td>
 							</tr>
 							<?php $_SESSION['cijena']=$value["ukupna_cijena"];
-								  $_SESSION['kolicina']=$value["ukupna_kolicina"]; ?>
+								  $_SESSION['kolicina']=$value["ukupna_kolicina"]; 
+								  $_SESSION['datum_dostave']=$value["datum_dostave"]; ?>
+
 						<?php endwhile;?>
 						
 									<tr>
@@ -90,15 +92,13 @@ if(isset($_POST['odbijeno'])){
 									<th><?php echo   $_SESSION['kolicina']; ?> kom</th>
 									<th><?php echo $_SESSION['cijena']; ?> KM</th>
 									<td>
-
+										
+									
 				</table>
-				
-				<form method="post" action="bijelastr.php" class="in" style="padding-right: 100px; margin: auto 0; text-align: center; ">
-				Unesite datum za dostavu <input type="text" name="datum" placeholder="00/00/0000" style="width: 20%; border: none; border-bottom: 2px solid #22313f; outline: none; height: 30px;" required><br><br>
-		<input type="submit" value="Prihvati narudžbu" name="potvrdjeno" style="width: 300px; margin: auto 0; text-align: center;">
-		<input type="submit" value="Odbij narudžbu" name="odbijeno" style="width: 300px; margin: auto 0; text-align: center;" formnovalidate>
-		<a href="moj_profil.php?izbor_1=<?$_SESSION['zap']?>" style="padding-left: 50px;">Natrag</a>
-		</form>
+				<br>
+				<h4 style=" margin: auto 0; text-align: center;">Molimo pricekajte dok prodavac potvrdi vašu narudžbu</h4>
+		<a href="moj_profil.php?izbor_1=<?$_SESSION['pos']?>" style="padding-left: 50px;">Natrag</a>
+		
 
 			</div>
 
