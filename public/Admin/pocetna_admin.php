@@ -4,7 +4,6 @@ session_start();
 require 'db.php';
 // php populate html table from mysql database
 
-
 $query1 = "SELECT * FROM korisnik WHERE tip = 'prodavac' ";
 
 
@@ -50,14 +49,13 @@ $result1 = mysqli_query($mysqli, $query1);
 			?>
 		
 		
-			<form method="post" action="brisanjeartikala.php">
+		<form method="post" action="pocetna_admin.php">
 				<div class="Leo">
 					<div class="btn">
 	
 					<input type="submit" name="ime_firme" style="color: rgb(207,209,221) ; font-size:60 ;  background-color: transparent;
 					border-color: transparent;  cursor: default;" value="<?php echo $korisnik['ime_firme'];?> " >
 					<input type="hidden" name="id_korisnika" value=" <?php echo $korisnik['id_korisnik'];?> "  >
-					
 				</div>
 				</div>
 			</form>
