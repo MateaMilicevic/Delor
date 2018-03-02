@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2018 at 03:21 PM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Generation Time: Mar 02, 2018 at 05:06 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -51,23 +51,6 @@ CREATE TABLE `arhiv` (
 --
 
 INSERT INTO `arhiv` (`id_arhiv`, `ime_firme_kupca`, `ime_firme_prodavaca`, `id_kupca`, `id_prodavaca`, `id_artikla`, `naziv`, `cijena`, `kolicina_artikla`, `ukupna_cijena`, `ukupna_kolicina`, `datum_narudzbe`, `datum_dostave`, `vrijeme`, `id_narudzbe`) VALUES
-(170, 'delor', 'delor', 29, 15, 43, 'Franck kava', 5, 12, 82, 23, '01/03/2018', '2/3/2018', '04:15:12pm', 135),
-(171, 'delor', 'delor', 29, 15, 46, 'Jagoda', 2, 11, 82, 23, '01/03/2018', '2/3/2018', '04:15:12pm', 135),
-(172, 'delor', 'delor', 29, 15, 50, 'Schweps bitter lemon', 2, 10, 220, 110, '28/02/2018', '20/12/2018', '11:08:07pm', 133),
-(173, 'delor', 'delor', 29, 15, 47, 'Jana voda bez poruke', 2, 100, 220, 110, '28/02/2018', '20/12/2018', '11:08:07pm', 133),
-(174, 'delor', 'delor', 29, 15, 43, 'Franck kava', 5, 1, 5, 1, '28/02/2018', '29/02/2018', '08:40:00pm', 128),
-(175, 'delor', 'delor', 29, 15, 51, 'qeq', 3113, 1, 34426, 2, '01/03/2018', '12112212', '04:35:52pm', 138),
-(176, 'delor', 'delor', 29, 15, 56, 'eeee', 31313, 1, 34426, 2, '01/03/2018', '12112212', '04:35:52pm', 138),
-(177, 'asas', 'delor', 30, 15, 43, 'Franck kava', 5, 11, 77, 22, '01/03/2018', '12121', '04:34:50pm', 136),
-(178, 'asas', 'delor', 30, 15, 47, 'Jana voda bez poruke', 2, 11, 77, 22, '01/03/2018', '12121', '04:34:50pm', 136),
-(179, 'asas', 'wafawf', 30, 24, 43, 'Franck kava', 5, 1, 7, 2, '01/03/2018', '12121', '04:35:30pm', 137),
-(180, 'asas', 'wafawf', 30, 24, 47, 'Jana voda bez poruke', 2, 1, 7, 2, '01/03/2018', '12121', '04:35:30pm', 137),
-(181, 'asas', 'wafawf', 30, 24, 43, 'Franck kava', 5, 1, 7, 2, '01/03/2018', '232323', '04:35:30pm', 137),
-(182, 'asas', 'wafawf', 30, 24, 47, 'Jana voda bez poruke', 2, 1, 7, 2, '01/03/2018', '232323', '04:35:30pm', 137),
-(183, 'delor', 'delor', 29, 15, 43, 'Franck kava', 5, 12, 82, 23, '01/03/2018', '21212221', '04:15:12pm', 135),
-(184, 'delor', 'delor', 29, 15, 46, 'Jagoda', 2, 11, 82, 23, '01/03/2018', '21212221', '04:15:12pm', 135),
-(185, 'delor', 'delor', 29, 15, 47, 'Jana voda bez poruke', 2, 1, 22, 11, '02/03/2018', '89889877', '01:19:10am', 139),
-(186, 'delor', 'delor', 29, 15, 50, 'Schweps bitter lemon', 2, 10, 22, 11, '02/03/2018', '89889877', '01:19:10am', 139),
 (187, 'Kupac1 caffe', 'delor', 33, 15, 43, 'Franck kava', 5, 1, 11, 4, '02/03/2018', '2.3.2018', '11:49:01am', 140),
 (188, 'Kupac1 caffe', 'delor', 33, 15, 46, 'Jagoda', 2, 3, 11, 4, '02/03/2018', '2.3.2018', '11:49:01am', 140),
 (189, 'Kupac1 caffe', 'Prodavac caffe ', 33, 15, 74, 'Jana', 0.5, 1, 0.5, 1, '02/03/2018', '2.3.2018', '03:06:04pm', 141);
@@ -94,7 +77,6 @@ CREATE TABLE `artikal` (
 --
 
 INSERT INTO `artikal` (`id_artikla`, `naziv`, `neto_kolicina`, `cijena`, `slika`, `tip`, `id_korisnik`, `id_kategorije`) VALUES
-(74, 'Jana', 0, '0.50', NULL, 'Negazirana pica', 15, NULL),
 (75, 'Leda', 0, '0.40', NULL, 'Negazirana pica', 15, NULL),
 (76, 'OÅ¾ujsko pivo', 1, '1.80', NULL, 'Alkoholna pica', 15, NULL),
 (77, 'KarlovaÄko pivo', 1, '1.90', NULL, 'Alkoholna pica', 15, NULL),
@@ -118,13 +100,6 @@ CREATE TABLE `detalji_narudzbe` (
   `cijena` double DEFAULT NULL,
   `naziv` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `detalji_narudzbe`
---
-
-INSERT INTO `detalji_narudzbe` (`id_dn`, `id_narudzbe`, `id_artikla`, `kolicina_artikala`, `id`, `cijena`, `naziv`) VALUES
-(48, 141, 74, 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -168,7 +143,8 @@ CREATE TABLE `korisnik` (
 
 INSERT INTO `korisnik` (`id_korisnik`, `korisnicko_ime`, `email`, `lozinka`, `ime_firme`, `ime`, `prezime`, `adresa`, `grad`, `drzava`, `postanski_broj`, `broj_telefona`, `faks`, `tip`) VALUES
 (15, 'Prodavac', 'drugi.korisnik@gmail.com', '$2y$10$wUkZHu3AVarpGuINF8QHq.hEokQiWpe3QB70iu4wDOQH4Pwy90/fC', 'Prodavac caffe ', 'Drugi', 'Korisnik', 'Balinovac 23A', 'Mostar', 'Bosna i Hercegovina', '88000', '063111222', '036222333', 'prodavac'),
-(33, 'Kupac', 'prvi.korisnik@gmail.com', '$2y$10$9fhVEIr716Fs6UQnak80jOgrOJFx1t2IyRxOixzJdjdDRgP2Jet/q', 'Kupac1 caffe', 'Prvi ', 'Korisnik', 'Balinovac 21A', 'Mostar', 'Bosna i Hercegovina', '88000', '063111222', '036111222', 'kupac');
+(33, 'Kupac', 'prvi.korisnik@gmail.com', '$2y$10$9fhVEIr716Fs6UQnak80jOgrOJFx1t2IyRxOixzJdjdDRgP2Jet/q', 'Kupac1 caffe', 'Prvi ', 'Korisnik', 'Balinovac 21A', 'Mostar', 'Bosna i Hercegovina', '88000', '063111222', '036111222', 'kupac'),
+(36, 'admin', 'admin@admin.com', '$2y$10$y/hm84OxLvA0LksNMWHDzuvO6NviYsst8okWgYPm.7dWBmAuonEla', 'Delor', 'Admin', 'Admin', 'Mostar', 'MOsatr', 'BiH', '88000', '63664705', '063664055', 'admin');
 
 -- --------------------------------------------------------
 
@@ -262,7 +238,7 @@ ALTER TABLE `artikal`
 -- AUTO_INCREMENT for table `detalji_narudzbe`
 --
 ALTER TABLE `detalji_narudzbe`
-  MODIFY `id_dn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_dn` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kategorija`
@@ -274,7 +250,7 @@ ALTER TABLE `kategorija`
 -- AUTO_INCREMENT for table `korisnik`
 --
 ALTER TABLE `korisnik`
-  MODIFY `id_korisnik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_korisnik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `narudzba`
