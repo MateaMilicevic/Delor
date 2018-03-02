@@ -86,8 +86,8 @@
 							Korisničko ime: Kupac </br>
 							Lozinka: 123</br>
 							<h4>Admin</h4>
-							Korisničko ime: Admin </br>
-							Lozinka: 123
+							Korisničko ime: admin </br>
+							Lozinka: admin
 							
 						</div>
 						
