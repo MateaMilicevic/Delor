@@ -11,15 +11,15 @@ if(isset($_POST['potvrda2'])) {
 		$naziv = $_POST['naziv'];
 		$neto_kolicina = $_POST['neto_kolicina'];
 		$cijena = $_POST['cijena'];
-		$dostupnost = $_POST['dostupnost'];
+		
 		$tip = $_POST['tip1'];
 		$_SESSION['logged_in'] = true;
 
 		
 
 		
-			$sql = "INSERT INTO artikal (naziv, neto_kolicina, cijena, dostupnost, tip, id_korisnik) "
-			. "VALUES ('$naziv','$neto_kolicina','$cijena', '$dostupnost','$tip', '".$_SESSION['id_korisnik']."' )";
+			$sql = "INSERT INTO artikal (naziv, neto_kolicina, cijena,  tip, id_korisnik) "
+			. "VALUES ('$naziv','$neto_kolicina','$cijena','$tip', '".$_SESSION['id_korisnik']."' )";
 			if ($mysqli->query($sql)){
 				header("location: artikl.php");
 			}
@@ -50,7 +50,7 @@ if(isset($_POST['potvrda2'])) {
               <input type="text" placeholder="Naziv artikla" name="naziv" required><br>
 			        <input type="text" placeholder="Neto količina" name="neto_kolicina" required><br>
 			        <input type="text" placeholder="Cijena" name="cijena" required><br>
-			        <input type="text" placeholder="Dostupnost" name="dostupnost" required><br><br>
+			        
               <label for="tip1"><h5>Kategorija:</h5></label>
                  <select class="tip1" id="tip1" name="tip1">
                     <option value="Topli napitci" name="tip">Topli napitci</option>

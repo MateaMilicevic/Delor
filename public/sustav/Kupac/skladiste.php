@@ -152,7 +152,7 @@ $result1 = mysqli_query($mysqli, $query1);
 	 						<th>Naziv</th>
 	  						<th>Cijena</th>
       						<th>Neto kolicina</th>
-      						<th>Dostupnost</th>
+      						
                             <th>Odabir</th>
     					</tr>
 
@@ -166,7 +166,7 @@ $result1 = mysqli_query($mysqli, $query1);
                 <td><input type="hidden" name="ime" value="<?php echo $artikal['naziv'];?>"><?php echo $artikal['naziv'];?></td>
                 <td><input type="hidden" name="cijenaa" value="<?php echo $artikal['cijena'];?>"><?php echo $artikal['cijena'];?></td>
 				<td><input type="hidden" name="neto" value="<?php echo $artikal['neto_kolicina'];?>"><?php echo $artikal['neto_kolicina'];?></td>
-				<td><?php echo $artikal['dostupnost'];?></td>
+				
                 <td><div class="btn">
                        
                             <input type="text" name="kolicina" value="1" size="1" class="demo-input-box">

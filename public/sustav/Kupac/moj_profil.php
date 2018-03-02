@@ -4,7 +4,7 @@ session_start();
 require 'db.php';
 unset($_SESSION["artiklic"]);
 // Kada se udje prvi put u stranicu da povuce podatke iz baze
-// if(!isset($_SESSION['pot'])&&!isset($_SESSION['pos'])&&!isset($_SESSION['kup'])){
+if((!isset($_SESSION['pot']))&&(!isset($_SESSION['pos']))&&(!isset($_SESSION['kup']))||(isset($_GET['query']))){
 	// Select za povezivanje trenutno aktivnog skladista/prodavaca sa njegovim narudzbama stanja zaprimljeno
 	$query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_kupca = korisnik.id_korisnik  
 		AND id_kupca ='".$_SESSION['id_korisnik']."' AND narudzba.stanje= 'zaprimljeno'  ORDER BY id_narudzbe DESC ";
@@ -32,8 +32,10 @@ if(isset($_POST['pos'])||(isset($_GET['izbor_1']))) {
 }
 
 if(isset($_POST['ime_firme'])){
-	if(!isset($_SESSION['pot'])&&!isset($_SESSION['pos'])&&!isset($_SESSION['kup'])){
+	echo "da";
+	if((!isset($_SESSION['pot']))&&(!isset($_SESSION['pos']))&&(!isset($_SESSION['kup']))){
 		// Select za povezivanje trenutno aktivnog skladista/prodavaca sa njegovim narudzbama stanja zaprimljeno
+		echo "bla";
 		$query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_kupca = korisnik.id_korisnik  
 			AND id_kupca =' ".$_SESSION['id_korisnik']." ' AND narudzba.stanje= 'zaprimljeno'  ORDER BY id_narudzbe DESC ";
 		$_SESSION['pos']=1;
@@ -75,7 +77,6 @@ $result1 = mysqli_query($mysqli, $query1);
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
 		    <ul class="navbar-nav ml-auto">
 			  <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
-			  <li class="nav-item-option nav-link navbar-toggler-center" style="border: 2px solid black; background-color: black; align_text: center; color: white;"><a href ="skladiste.php"><h2><?php echo $_SESSION['ime_firme_prodavaca'] ?></h2></a></li>
               <li class="nav-item option"><a class="nav-link" href="pocetna2.php">Skladišta</a></li>
 	          <li class="nav-item option"><a class="nav-link " href="../../prijava/odjava.php">Odjava</a></li>
              </ul>
