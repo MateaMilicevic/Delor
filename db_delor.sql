@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2018 at 10:36 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Mar 02, 2018 at 03:21 PM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -67,7 +67,10 @@ INSERT INTO `arhiv` (`id_arhiv`, `ime_firme_kupca`, `ime_firme_prodavaca`, `id_k
 (183, 'delor', 'delor', 29, 15, 43, 'Franck kava', 5, 12, 82, 23, '01/03/2018', '21212221', '04:15:12pm', 135),
 (184, 'delor', 'delor', 29, 15, 46, 'Jagoda', 2, 11, 82, 23, '01/03/2018', '21212221', '04:15:12pm', 135),
 (185, 'delor', 'delor', 29, 15, 47, 'Jana voda bez poruke', 2, 1, 22, 11, '02/03/2018', '89889877', '01:19:10am', 139),
-(186, 'delor', 'delor', 29, 15, 50, 'Schweps bitter lemon', 2, 10, 22, 11, '02/03/2018', '89889877', '01:19:10am', 139);
+(186, 'delor', 'delor', 29, 15, 50, 'Schweps bitter lemon', 2, 10, 22, 11, '02/03/2018', '89889877', '01:19:10am', 139),
+(187, 'Kupac1 caffe', 'delor', 33, 15, 43, 'Franck kava', 5, 1, 11, 4, '02/03/2018', '2.3.2018', '11:49:01am', 140),
+(188, 'Kupac1 caffe', 'delor', 33, 15, 46, 'Jagoda', 2, 3, 11, 4, '02/03/2018', '2.3.2018', '11:49:01am', 140),
+(189, 'Kupac1 caffe', 'Prodavac caffe ', 33, 15, 74, 'Jana', 0.5, 1, 0.5, 1, '02/03/2018', '2.3.2018', '03:06:04pm', 141);
 
 -- --------------------------------------------------------
 
@@ -80,7 +83,6 @@ CREATE TABLE `artikal` (
   `naziv` varchar(30) NOT NULL,
   `neto_kolicina` int(20) NOT NULL,
   `cijena` varchar(250) NOT NULL,
-  `dostupnost` int(250) NOT NULL,
   `slika` longblob,
   `tip` varchar(20) NOT NULL,
   `id_korisnik` int(11) DEFAULT NULL,
@@ -91,26 +93,15 @@ CREATE TABLE `artikal` (
 -- Dumping data for table `artikal`
 --
 
-INSERT INTO `artikal` (`id_artikla`, `naziv`, `neto_kolicina`, `cijena`, `dostupnost`, `slika`, `tip`, `id_korisnik`, `id_kategorije`) VALUES
-(43, 'Franck kava', 1, '5', 10, NULL, 'Topli napitci', 15, NULL),
-(46, 'Jagoda', 0, '2', 100, NULL, 'Negazirana pica', 15, NULL),
-(47, 'Jana voda bez poruke', 1, '2', 10, NULL, 'Negazirana pica', 15, NULL),
-(48, 'Jana voda s porukom', 1, '2', 100, NULL, 'Negazirana pica', 15, NULL),
-(49, 'Caj indijski', 2, '2', 100, NULL, 'Topli napitci', 15, NULL),
-(50, 'Schweps bitter lemon', 1, '2', 100, NULL, 'Gazirana pica', 15, NULL),
-(51, 'qeq', 2323, '3113', 1313, NULL, 'Alkoholna pica', 15, NULL),
-(52, 'bla', 123, '12', 12, NULL, 'Topli napitci', 15, NULL),
-(53, 'sds', 313, '1313', 1212, NULL, 'Topli napitci', 15, NULL),
-(54, 'leo', 12, '12', 12, NULL, 'Topli napitci', 15, NULL),
-(55, 'lll', 4424, '2424', 42422, NULL, 'Topli napitci', 15, NULL),
-(56, 'eeee', 1231, '31313', 1313, NULL, 'Topli napitci', 15, NULL),
-(60, 'wrw', 24234, '24242', 2442, NULL, 'Topli napitci', 15, NULL),
-(61, 'yxf', 3434, '24242', 24242, NULL, 'Topli napitci', 15, NULL),
-(62, 'weew', 232332, '2323', 2323232, NULL, 'Topli napitci', 15, NULL),
-(66, 'Schweps bitter lemon', 2112, '121', 3232, NULL, 'Gazirana pica', 24, NULL),
-(70, 'ewe', 2332, '232', 2323, NULL, 'Topli napitci', 24, NULL),
-(71, 'sees', 131, '3113', 1313, NULL, 'Topli napitci', 24, NULL),
-(72, 'Franck kava', 231, '232', 232, NULL, 'Topli napitci', 24, NULL);
+INSERT INTO `artikal` (`id_artikla`, `naziv`, `neto_kolicina`, `cijena`, `slika`, `tip`, `id_korisnik`, `id_kategorije`) VALUES
+(74, 'Jana', 0, '0.50', NULL, 'Negazirana pica', 15, NULL),
+(75, 'Leda', 0, '0.40', NULL, 'Negazirana pica', 15, NULL),
+(76, 'OÅ¾ujsko pivo', 1, '1.80', NULL, 'Alkoholna pica', 15, NULL),
+(77, 'KarlovaÄko pivo', 1, '1.90', NULL, 'Alkoholna pica', 15, NULL),
+(78, 'Kiseljak', 0, '0.80', NULL, 'Gazirana pica', 15, NULL),
+(79, 'Coca-Cola', 0, '1', NULL, 'Gazirana pica', 15, NULL),
+(80, 'ÄŒaj Menta', 1, '1', NULL, 'Topli napitci', 15, NULL),
+(81, 'ÄŒaj Kamilica', 1, '1', NULL, 'Topli napitci', 15, NULL);
 
 -- --------------------------------------------------------
 
@@ -133,27 +124,7 @@ CREATE TABLE `detalji_narudzbe` (
 --
 
 INSERT INTO `detalji_narudzbe` (`id_dn`, `id_narudzbe`, `id_artikla`, `kolicina_artikala`, `id`, `cijena`, `naziv`) VALUES
-(16, 127, 43, 1, NULL, NULL, NULL),
-(17, 127, 46, 1, NULL, NULL, NULL),
-(18, 127, 47, 1, NULL, NULL, NULL),
-(19, 127, 48, 1, NULL, NULL, NULL),
-(20, 127, 48, 10, NULL, NULL, NULL),
-(21, 128, 43, 1, NULL, NULL, NULL),
-(31, 133, 50, 10, NULL, NULL, NULL),
-(32, 133, 47, 100, NULL, NULL, NULL),
-(33, 134, 43, 10, NULL, NULL, NULL),
-(34, 134, 49, 10, NULL, NULL, NULL),
-(35, 134, 50, 5, NULL, NULL, NULL),
-(36, 135, 43, 12, NULL, NULL, NULL),
-(37, 135, 46, 11, NULL, NULL, NULL),
-(38, 136, 43, 11, NULL, NULL, NULL),
-(39, 136, 47, 11, NULL, NULL, NULL),
-(40, 137, 43, 1, NULL, NULL, NULL),
-(41, 137, 47, 1, NULL, NULL, NULL),
-(42, 138, 51, 1, NULL, NULL, NULL),
-(43, 138, 56, 1, NULL, NULL, NULL),
-(44, 139, 47, 1, NULL, NULL, NULL),
-(45, 139, 50, 10, NULL, NULL, NULL);
+(48, 141, 74, 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -185,9 +156,9 @@ CREATE TABLE `korisnik` (
   `adresa` varchar(50) DEFAULT NULL,
   `grad` varchar(30) DEFAULT NULL,
   `drzava` varchar(30) DEFAULT NULL,
-  `postanski_broj` int(10) DEFAULT NULL,
+  `postanski_broj` varchar(10) DEFAULT NULL,
   `broj_telefona` varchar(13) DEFAULT NULL,
-  `faks` int(13) DEFAULT NULL,
+  `faks` varchar(13) DEFAULT NULL,
   `tip` varchar(234) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -196,12 +167,8 @@ CREATE TABLE `korisnik` (
 --
 
 INSERT INTO `korisnik` (`id_korisnik`, `korisnicko_ime`, `email`, `lozinka`, `ime_firme`, `ime`, `prezime`, `adresa`, `grad`, `drzava`, `postanski_broj`, `broj_telefona`, `faks`, `tip`) VALUES
-(15, 'lekyluu', 'jvlkvhlxkh', '$2y$10$wUkZHu3AVarpGuINF8QHq.hEokQiWpe3QB70iu4wDOQH4Pwy90/fC', 'delor', 'sdvv', 'luu', 'aihldhgila', 'sfioiof', 'lkfshfliahd', 1331, '13313', 1531385, 'prodavac'),
-(24, 'mat', 'wrrrwr', '$2y$10$t8clQaeQ4kh77xUCpbNIYe5ZeMfDb.WV6oxlqllTV.R0tQGKKEeUG', 'wafawf', 'rwr', 'wrwrw', '22242', '2442', '2424', 24242, '1212', 2424, 'prodavac'),
-(29, 'lekyluuk', 'leo', '$2y$10$t0D.qrziH0AUrRBj/05E0.D8kG/CC0paFbpYeAKG0Llq/o6dQ7ToO', 'delor', 'leo', 'primorac', '1 ulica', 'mosatr', 'BIH', 88000, '313131', 3131, 'kupac'),
-(30, 'valen', 'ccc', '$2y$10$kHqJ8LfbiWR1aqxtRif8yent2E9IgSoJ/3oTg0BnvIv5UIg6GSf0C', 'asas', 'valen', 'radic', 'qwqw', 'dssa', 'dad', 12121, '31313', 1212, 'kupac'),
-(31, 'lll', 'll@gmail.com', '$2y$10$.ifMk2T4pzac0zzpSG30ROd9PsPOBjN21VA24WY7EckqfgHXnSxnK', NULL, 'll', 'll', NULL, NULL, NULL, NULL, '255', NULL, 'kupac'),
-(32, 'llll', 'll@gmail.com', '$2y$10$/NGG0/t8rnDSa5C.2WpyCeJS5gFyt6RbMbxwEcKcPWy6GuQP0WG4u', NULL, 'lll', 'll', NULL, NULL, NULL, NULL, '255', NULL, 'kupac');
+(15, 'Prodavac', 'drugi.korisnik@gmail.com', '$2y$10$wUkZHu3AVarpGuINF8QHq.hEokQiWpe3QB70iu4wDOQH4Pwy90/fC', 'Prodavac caffe ', 'Drugi', 'Korisnik', 'Balinovac 23A', 'Mostar', 'Bosna i Hercegovina', '88000', '063111222', '036222333', 'prodavac'),
+(33, 'Kupac', 'prvi.korisnik@gmail.com', '$2y$10$9fhVEIr716Fs6UQnak80jOgrOJFx1t2IyRxOixzJdjdDRgP2Jet/q', 'Kupac1 caffe', 'Prvi ', 'Korisnik', 'Balinovac 21A', 'Mostar', 'Bosna i Hercegovina', '88000', '063111222', '036111222', 'kupac');
 
 -- --------------------------------------------------------
 
@@ -226,15 +193,8 @@ CREATE TABLE `narudzba` (
 --
 
 INSERT INTO `narudzba` (`id_narudzbe`, `ukupna_cijena`, `ukupna_kolicina`, `datum_narudzbe`, `vrijeme`, `datum_dostave`, `stanje`, `id_kupca`, `id_prodavaca`) VALUES
-(127, 31, 14, '28/02/2018', '03:54:39pm', '21/8/2019', 'prodano', 29, 15),
-(128, 5, 1, '28/02/2018', '08:40:00pm', '29/02/2018', 'prodano', 29, 15),
-(133, 220, 110, '28/02/2018', '11:08:07pm', '20/12/2018', 'prodano', 29, 15),
-(134, 80, 25, '28/02/2018', '11:37:07pm', '29/2/2018', 'prodano', 29, 15),
-(135, 82, 23, '01/03/2018', '04:15:12pm', '21212221', 'prodano', 29, 15),
-(136, 77, 22, '01/03/2018', '04:34:50pm', '12121', 'prodano', 30, 15),
-(137, 7, 2, '01/03/2018', '04:35:30pm', '232323', 'prodano', 30, 24),
-(138, 34426, 2, '01/03/2018', '04:35:52pm', '12112212', 'prodano', 29, 15),
-(139, 22, 11, '02/03/2018', '01:19:10am', '89889877', 'prodano', 29, 15);
+(140, 11, 4, '02/03/2018', '11:49:01am', '2.3.2018', 'prodano', 33, 15),
+(141, 0.5, 1, '02/03/2018', '03:06:04pm', '2.3.2018', 'prodano', 33, 15);
 
 --
 -- Indexes for dumped tables
@@ -290,19 +250,19 @@ ALTER TABLE `narudzba`
 -- AUTO_INCREMENT for table `arhiv`
 --
 ALTER TABLE `arhiv`
-  MODIFY `id_arhiv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
+  MODIFY `id_arhiv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
 
 --
 -- AUTO_INCREMENT for table `artikal`
 --
 ALTER TABLE `artikal`
-  MODIFY `id_artikla` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id_artikla` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `detalji_narudzbe`
 --
 ALTER TABLE `detalji_narudzbe`
-  MODIFY `id_dn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_dn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `kategorija`
@@ -314,13 +274,13 @@ ALTER TABLE `kategorija`
 -- AUTO_INCREMENT for table `korisnik`
 --
 ALTER TABLE `korisnik`
-  MODIFY `id_korisnik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_korisnik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `narudzba`
 --
 ALTER TABLE `narudzba`
-  MODIFY `id_narudzbe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `id_narudzbe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
 
 --
 -- Constraints for dumped tables
