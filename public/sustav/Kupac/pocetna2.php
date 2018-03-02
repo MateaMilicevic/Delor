@@ -29,7 +29,6 @@ $result1 = mysqli_query($mysqli, $query1);
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php?query='1'">Moj profil</a></li>
-				<li class="nav-item option"><a class="nav-link" href="kosarica.php">Košarica</a></li>
 				<li class="nav-item option"><a class="nav-link" href="pocetna2.php">Skladišta</a></li>
 				<li class="nav-item option"><a class="nav-link" href="../../prijava/odjava.php">Odjava</a></li>
 			</ul>

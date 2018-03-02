@@ -18,7 +18,7 @@
             <div class="left"></div>
             <div class="right">
                 <div class="okvir">
-                    <form method="post" action="prijava.php">
+                    <form method="post" action="prijava_funk.php">
                          <p>Korisničko ime</p>
                          <input type="text" name="korime" placeholder="Online">
                          <p>Lozinka</p>
