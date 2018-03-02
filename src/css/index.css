@@ -128,8 +128,9 @@ html, body{
  transform: scale(1.3);  
   } 
 
-#kontakt{
+#contact{
     padding-bottom: 30px;
+    height: 100vh !important;
 }
 #contact{
     height: 80vh;
