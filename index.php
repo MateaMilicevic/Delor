@@ -20,7 +20,7 @@
 	          <li class="nav-item option"><a class="nav-link" href="#about">O nama</a></li>
 	          <li class="nav-item option"><a class="nav-link" href="#contact">Kontakt</a></li>
 	          <li class="nav-item option"><a class="nav-link" href="public/vizija.php" >Vizija</a></li>
-	          <li class="nav-item option"><a class="nav-link" href="public/prijava/index.php">Prijava</a></li>
+	          <li class="nav-item option"><a class="nav-link" href="public/prijava/prijava.php">Prijava</a></li>
 	          <li class="nav-item option"><a class="nav-link" href="public/prijava/registracija.php">Registracija</a></li>
 		    </ul>
 		  </div>

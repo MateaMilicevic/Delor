@@ -29,6 +29,9 @@
 					<br>
 					<input type="submit" value="Registracija" name="reg">
 				</form>
+				<form method="post" action="../../index.php">
+					<input type="submit" value="Natrag" name="nat">
+				</form>
 			</div>
 		</div>
 	</div>
