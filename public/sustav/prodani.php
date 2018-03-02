@@ -103,7 +103,7 @@ $result2 = mysqli_query($mysqli, $query1);
 		<br>
 		<br>
 			<button onclick="myFunction()" style="width: 300px; margin: auto 0; text-align: center;">Print this page</button>
-			<a href="moj_profil.php?izbor_3=<?$_SESSION['prod']?>" style="padding-left: 50px;">Natrag</a>
+			<a href="moj_profil.php?izbor_3='1'" style="padding-left: 50px;">Natrag</a>
 	</div>
 	</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

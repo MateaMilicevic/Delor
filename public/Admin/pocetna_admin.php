@@ -26,9 +26,10 @@ $result1 = mysqli_query($mysqli, $query1);
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
-		    <ul class="navbar-nav ml-center">
-	          <li class="nav-item option"><a class="nav-link" href="urediprofil_a.php">Uredi profile</a></li>
-	          <li class="nav-item option"><a class="nav-link" href="#contact">Arhiv narudžbi</a></li>
+		    <ul class="navbar-nav ml-auto">
+	          <li class="nav-item option"><a class="nav-link " href="urediprofil_a.php">Brisanje korisnika</a></li>
+	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="arhiv.php">Arhiv narudžbi</a></li>
+			  <li class="nav-item option "><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
 		    </ul>
 		  </div>
 		</nav>
