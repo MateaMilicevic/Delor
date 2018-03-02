@@ -5,14 +5,14 @@ require 'db.php';
 if (isset($_POST["drop"])){
 	$_SESSION['id']= $_POST['id'];
 	$id= $_SESSION['id'];
-	$sql="DELETE FROM `artikal` WHERE `id_artikla`=0";
+	$sql="DELETE FROM `artikal` WHERE `id_artikla`='$id'";
 	if ($mysqli->query($sql)){
-	header("location: brisanjeartikala.php");
+	header("location: brisanjeartikala.php?query='1'");
 	}
 }
-$query1 = "SELECT * FROM artikal WHERE id_korisnik = 15";
-if(!isset($_SESSION['TN'])&&!isset($_SESSION['GP'])&&!isset($_SESSION['AP'])&&!isset($_SESSION['NP'])){
-	$query1 = "SELECT * FROM artikal WHERE id_korisnik = '".$_POST["id_korisnik"]."'";
+
+if((!isset($_SESSION['TN']))&&(!isset($_SESSION['GP']))&&(!isset($_SESSION['AP']))&&(!isset($_SESSION['NP']))||(isset($_GET['query']))){
+	$query1 = "SELECT * FROM artikal WHERE id_korisnik = '".$_SESSION['id_korisnika']."'";
 }
 
 if(isset($_POST['TN'])) {
@@ -20,29 +20,29 @@ if(isset($_POST['TN'])) {
 	if(isset($_SESSION['GP'])) unset($_SESSION['GP']);
 	if(isset($_SESSION['AP'])) unset($_SESSION['AP']);
 	if(isset($_SESSION['NP'])) unset($_SESSION['NP']);
-	$query1 = "SELECT * FROM artikal WHERE tip='Topli napitci' AND id_korisnik = 15";
+	$query1 = "SELECT * FROM artikal WHERE tip='Topli napitci' AND id_korisnik = '".$_SESSION['id_korisnika']."'";
 }elseif(isset($_POST['GP'])){
 	$_SESSION['GP']=$_POST['GP'];
 	if(isset($_SESSION['TN'])) unset($_SESSION['TN']);
 	if(isset($_SESSION['AP'])) unset($_SESSION['AP']);
 	if(isset($_SESSION['NP'])) unset($_SESSION['NP']);
-	$query1 = "SELECT * FROM artikal WHERE tip='Gazirana pica'AND id_korisnik = 15 ";
+	$query1 = "SELECT * FROM artikal WHERE tip='Gazirana pica'AND id_korisnik = '".$_SESSION['id_korisnika']."'";
 }elseif(isset($_POST['AP'])){
 	$_SESSION['AP']=$_POST['AP'];
 	if(isset($_SESSION['TN'])) unset($_SESSION['TN']);
 	if(isset($_SESSION['GP'])) unset($_SESSION['GP']);
 	if(isset($_SESSION['NP'])) unset($_SESSION['NP']);
-	$query1 = "SELECT * FROM artikal WHERE tip='Alkoholna pica' AND id_korisnik = 15";
+	$query1 = "SELECT * FROM artikal WHERE tip='Alkoholna pica' AND id_korisnik = '".$_SESSION['id_korisnika']."'";
 }elseif(isset($_POST['NP'])){
 	$_SESSION['NP']=$_POST['NP'];
 	if(isset($_SESSION['TN'])) unset($_SESSION['TN']);
 	if(isset($_SESSION['AP'])) unset($_SESSION['AP']);
 	if(isset($_SESSION['GP'])) unset($_SESSION['GP']);
-	$query1 = "SELECT * FROM artikal WHERE tip='Negazirana pica' AND id_korisnik = 15";
+	$query1 = "SELECT * FROM artikal WHERE tip='Negazirana pica' AND id_korisnik = '".$_SESSION['id_korisnika']."'";
 }
 if(isset($_POST['ime_firme'])){
-	$_SESSION['korisnik_id']=$_POST['id_korisnik'];
-	$query1 = "SELECT * FROM artikal WHERE id_korisnik = '".$_SESSION['korisnik_id']."'";
+$_SESSION['id_korisnika']=$_POST["id_korisnika"];
+$query1 = "SELECT * FROM artikal WHERE id_korisnik = '".$_POST["id_korisnika"]."'";
 }
 
 // result for method one

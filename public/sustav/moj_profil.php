@@ -10,6 +10,7 @@ if(!isset($_SESSION['pot'])&&!isset($_SESSION['zap'])&&!isset($_SESSION['prod'])
 		AND id_prodavaca ='".$_SESSION['id_korisnik']."' AND narudzba.stanje= 'zaprimljeno'  ORDER BY id_narudzbe DESC ";
 }
 
+$_SESSION['idnarudzbe']='1';
 // Kada se vrsi odabir opcija zaprimljeno, potvrdjeno i naruceno i vrcanje unazad sa bijelih stranica
 if(isset($_POST['zap'])||(isset($_GET['izbor_1']))) {
 	if(isset($_SESSION['pot'])) unset($_SESSION['pot']);
@@ -23,12 +24,11 @@ if(isset($_POST['zap'])||(isset($_GET['izbor_1']))) {
 	if(isset($_SESSION['prod'])) unset($_SESSION['prod']);
 	$query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_prodavaca = korisnik.id_korisnik  
 		AND id_prodavaca =' ".$_SESSION['id_korisnik']." ' AND narudzba.stanje= 'potvrdjeno2'  ORDER BY id_narudzbe DESC ";
-}elseif(isset($_POST['prod'])||(isset($_GET['izbor_3']))){
+}elseif(isset($_POST['prod'])||(isset($_GET['izbor_3']))||(isset($_GET['query3']))){
 	$_SESSION['prod']=3;
 	if(isset($_SESSION['zap'])) unset($_SESSION['zap']);
 	if(isset($_SESSION['pot'])) unset($_SESSION['pot']);
-	$query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_prodavaca = korisnik.id_korisnik  
-		AND id_prodavaca =' ".$_SESSION['id_korisnik']." ' AND narudzba.stanje= 'prodano'  ORDER BY id_narudzbe DESC ";
+	$query1 = "SELECT * FROM arhiv WHERE id_prodavac = ' ".$_SESSION['id_korisnik']." '";
 }
 
 if(isset($_POST['ime_firme'])){
@@ -49,9 +49,13 @@ if(isset($_POST['ime_firme'])){
 		header("location: prodani.php");
 	}
 	$result1 = mysqli_query($mysqli, $query1);
+	
+	
+	
 }
 $result1 = mysqli_query($mysqli, $query1);
-	
+
+
 	
 
 
@@ -131,6 +135,7 @@ $result1 = mysqli_query($mysqli, $query1);
 		 			</div>
 				</nav>
 				<div class="row">
+				<?php if((isset($_POST['zap']))||(isset($_POST['pot']))||(isset($_GET['query']))){ ?>
 				<table class="table" cellpadding="1">
   					<tbody>
 					  <?php while($korisnik = mysqli_fetch_array($result1)):
@@ -158,7 +163,37 @@ $result1 = mysqli_query($mysqli, $query1);
 			<?php endwhile;?>			
 					  	
 				</table>
-			
+					  <?php }?>
+
+
+					  <?php if((isset($_POST['prod']))||(isset($_GET['izbor_3']))){ ?>
+				<table class="table" cellpadding="1">
+  					<tbody>
+					  <?php 
+					  $querypp = "SELECT * FROM arhiv WHERE id_prodavaca = ' ".$_SESSION['id_korisnik']." ' ORDER BY id_narudzbe DESC";
+					  $resultpp = mysqli_query($mysqli, $querypp);
+					  while($korisnik2 = mysqli_fetch_array($resultpp)):
+					  
+						?>	
+					 <tr>
+					 <?php if($_SESSION['idnarudzbe']!=$korisnik2["id_narudzbe"]){ ?>
+						<form method="post" action="moj_profil.php">
+							<td>
+							<div class="btn">
+							<input type="hidden" name="id" value="<?php echo $korisnik2['id_narudzbe'];?>"><?php $_SESSION['idnarudzbe']= $korisnik2["id_narudzbe"]; ?>
+							<input type="submit" name="ime_firme" style="color: white; background-color: transparent;
+							 border-color: transparent; cursor: default;" value="<?php echo $korisnik2['ime_firme_kupca'];?>                       <?php echo $korisnik2['datum_narudzbe'];?>" >
+							 </div>
+							 </td>
+
+						</form>
+					</tr>
+					 <?php } ?>
+            
+			<?php endwhile;?>			
+					  	
+				</table>
+					  <?php }?>
 			</div>
         		</div>
                

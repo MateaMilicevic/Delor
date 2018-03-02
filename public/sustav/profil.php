@@ -7,17 +7,6 @@ if(isset($_SESSION['zap'])) unset($_SESSION['zap']);
 if(isset($_SESSION['prod'])) unset($_SESSION['prod']);
 if(isset($_SESSION['pot'])) unset($_SESSION['pot']);
 
-
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "db_delor";
-
-// connect to mysql
-$connect = mysqli_connect($hostname, $username, $password, $databaseName);
-
-// mysql select query
-
 $query1 = "SELECT * FROM artikal WHERE id_korisnik = '".$_SESSION['id_korisnik']."'";
 $query2 = "SELECT * FROM artikal WHERE naziv='coca'";
 
@@ -37,8 +26,6 @@ $result1 = mysqli_query($mysqli, $query1);
 $query2 = "SELECT * FROM korisnik WHERE id_korisnik = '".$_SESSION['id_korisnik']."'";
 $result2 = mysqli_query($mysqli, $query2);
 $value2 = mysqli_fetch_array($result2);
-
-
 
 
 ?>
@@ -61,7 +48,7 @@ $value2 = mysqli_fetch_array($result2);
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
 		    <ul class="navbar-nav ml-auto">	
 			<li class="nav-item-option nav-link navbar-toggler-center" style="border: 2px solid black; background-color: black;"><h2><?php echo $value2['ime_firme'] ?></h2></li>							
-	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php">Moj profil</a></li>
+	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php?query='1'">Moj profil</a></li>
 
 	          <li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
              </ul>
@@ -124,7 +111,7 @@ $value2 = mysqli_fetch_array($result2);
 	 						<th>Naziv</th>
 	  						<th>Cijena</th>
       						<th>Neto kolicina</th>
-      						<th>Dostupnost</th>
+      						
 							
     					</tr>
 
@@ -133,15 +120,20 @@ $value2 = mysqli_fetch_array($result2);
 					  <?php while($artikal = mysqli_fetch_array($result1)):;?>	
 					 
             <tr>
+		
                 <td><?php echo $artikal['id_artikla'];?></td>
                 <td><?php echo $artikal['naziv'];?></td>
-                <td><?php echo $artikal['cijena'];?></td>
-				<td><?php echo $artikal['neto_kolicina'];?></td>
-				<td><?php echo $artikal['dostupnost'];?></td>
-            </tr>
+                <td><?php echo $artikal['cijena'];?> KM</td>
+				<td><?php echo $artikal['neto_kolicina'];?>  kom</td>
+				<td></td>
             
 			<?php endwhile;?>			
-					  	
+			
+								
+									 
+				   				</div></td>
+						
+							</tr>
 				</table>
 				</div>
 			</div>
