@@ -50,13 +50,13 @@ $result1 = mysqli_query($mysqli, $query1);
 
 
 // if(isset($_POST['skladiste'])){
-	$query3 = "SELECT *FROM korisnik , artikal WHERE korisnik.id_korisnik=artikal.id_korisnik AND korisnik.id_korisnik=15";
+	// $query3 = "SELECT *FROM korisnik , artikal WHERE korisnik.id_korisnik=artikal.id_korisnik AND korisnik.id_korisnik=15";
 	
-	$result3 = mysqli_query($mysqli, $query3);
+	// $result3 = mysqli_query($mysqli, $query3);
 	
-	$ime = mysqli_fetch_array($result3);
-	$_SESSION['id_prodavac']= $ime['id_korisnik'];
-	$_SESSION['ime_firme_prodavaca']= $ime['ime_firme'];
+	// $ime = mysqli_fetch_array($result3);
+	// $_SESSION['id_prodavac']= $ime['id_korisnik'];
+	// $_SESSION['ime_firme_prodavaca']= $ime['ime_firme'];
 
 // }
 
@@ -80,8 +80,7 @@ $result1 = mysqli_query($mysqli, $query1);
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
 		    <ul class="navbar-nav ml-center">
-	          <li class="nav-item option"><a class="nav-link" href="#about">Uredi profile</a></li>
-	          <li class="nav-item option"><a class="nav-link" href="#contact">Arhiv narudžbi</a></li>
+	          <li class="nav-item option"><a class="nav-link" href="pocetna_admin.php">Natrag</a></li>
 		    </ul>
 		  </div>
 		</nav>

@@ -28,7 +28,7 @@ $result1 = mysqli_query($mysqli, $query1);
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
 		    <ul class="navbar-nav ml-center">
-	          <li class="nav-item option"><a class="nav-link" href="#about">Uredi profile</a></li>
+	          <li class="nav-item option"><a class="nav-link" href="urediprofil_a.php">Uredi profile</a></li>
 	          <li class="nav-item option"><a class="nav-link" href="#contact">Arhiv narudžbi</a></li>
 		    </ul>
 		  </div>
