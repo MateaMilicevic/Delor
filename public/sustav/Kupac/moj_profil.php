@@ -8,7 +8,7 @@ if((!isset($_SESSION['pot']))&&(!isset($_SESSION['pos']))&&(!isset($_SESSION['ku
 	// Select za povezivanje trenutno aktivnog skladista/prodavaca sa njegovim narudzbama stanja zaprimljeno
 	$query1 = "SELECT * FROM narudzba, korisnik WHERE narudzba.id_kupca = korisnik.id_korisnik  
 		AND id_kupca ='".$_SESSION['id_korisnik']."' AND narudzba.stanje= 'zaprimljeno'  ORDER BY id_narudzbe DESC ";
-// }
+ }
 $_SESSION['idnarudzbe']= 1;
 // Kada se vrsi odabir opcija zaprimljeno, potvrdjeno i naruceno i vrcanje unazad sa bijelih stranica
 if(isset($_POST['pos'])||(isset($_GET['izbor_1']))) {
