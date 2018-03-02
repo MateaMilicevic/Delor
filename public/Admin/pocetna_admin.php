@@ -50,7 +50,7 @@ $result1 = mysqli_query($mysqli, $query1);
 			?>
 		
 		
-		<form method="post" action="pocetna_admin.php">
+		<form method="post" action="brisanjeartikala.php">
 			<div class="Leo">
 				<div class="btn">
 	

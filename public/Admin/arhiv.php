@@ -82,7 +82,7 @@ if (isset($_POST["drop"])){
                                 <td><?php echo $value["datum_dostave"]; ?></td>
                                 <td><?php echo $value["ukupna_cijena"]; ?> KM</td>
                                 <td><?php echo $value["ukupna_kolicina"]; ?></td>
-                                <td><input type="submit"  value="Brisanje korisnika" name="drop"></td>
+                                <td><input type="submit"  value="Brisanje narudzbe" name="drop"></td>
                                 </form>
                                <?php } ?>
 							</tr>

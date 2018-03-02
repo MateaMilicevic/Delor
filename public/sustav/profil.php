@@ -124,7 +124,7 @@ $value2 = mysqli_fetch_array($result2);
                 <td><?php echo $artikal['id_artikla'];?></td>
                 <td><?php echo $artikal['naziv'];?></td>
                 <td><?php echo $artikal['cijena'];?> KM</td>
-				<td><?php echo $artikal['neto_kolicina'];?>  kom</td>
+				<td><?php echo $artikal['neto_kolicina'];?> </td>
 				<td></td>
             
 			<?php endwhile;?>			

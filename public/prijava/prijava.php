@@ -31,8 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$_SESSION['logged_in'] = true;
 				header("location: session.php");
 			} else {
-				$_SESSION['message'] = "Neispravna lozinka.";
-				header("location: poruka.php");
+				alert("Hello! I am an alert box!!");
 			}
 		}
 	}

@@ -61,6 +61,7 @@ $result1 = mysqli_query($mysqli, $query1);
 					
 						<?php while($korisnik = mysqli_fetch_array($result1)):?>
 						<tr>
+							<?php if($korisnik['tip']!= 'admin'){ ?>
 							<form method="post" action="urediprofil_a.php">
 								<td><input type="hidden" name="id_korisnika" value=" <?php echo $korisnik['id_korisnik'];?> ">  <?php echo $korisnik['id_korisnik'];?></td>
 								<td><input type="hidden" name="korisnicko_ime" value=" <?php echo $korisnik['id_korisnik'];?> ">  <?php echo $korisnik['korisnicko_ime'];?></td>
@@ -69,6 +70,7 @@ $result1 = mysqli_query($mysqli, $query1);
 									 <input type="submit"  value="Brisanje korisnika" name="drop">
 				   				</div></td>
 							</form>
+						<?php } ?>
 						</tr>
 						<?php endwhile;?>
 					</tbody>
