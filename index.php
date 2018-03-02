@@ -102,11 +102,7 @@
 				</div>
 			</div>
 		</div>
-		<script>
-			$(document).ready(function(){
-		$('.popoverData').popover();
-    $('.popoverOption').popover({ trigger: "hover" });});
-  </script>
+		
 		
 	</div>
 	
