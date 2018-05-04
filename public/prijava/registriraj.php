@@ -15,27 +15,25 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$uloga = $_POST['uloga'];
 		$telbroj = $_POST['telbroj'];
 
-		$result = $mysqli->query("SELECT * FROM korisnik WHERE korisnicko_ime ='$korime'") or die($mysqli->error());
-
-		if ( $result->num_rows > 0 ) {
-			$_SESSION['message'] = 'Korisnik s ovom e-mail adresom već postoji!';
-			header("location: poruka.php"); //Dodaj alert $_SESSION['message']
-		}else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-				$_SESSION['message'] = 'Unjeli ste pogrešnu e-mail adresu!';
-			
-		} else if($_POST['lozinka'] != $_POST['lozinkaa']){
-			$_SESSION['message'] = "Lozinke se ne podudaraju!";
-			header("location: poruka.php"); //Dodaj alert $_SESSION['message']
-		} else {
+		
+		
+	
 			$sql = "INSERT INTO korisnik (ime, prezime, email, korisnicko_ime, lozinka, tip, broj_telefona) "
 			. "VALUES ('$ime','$prezime','$email', '$korime', '$lozinka', '$uloga', $telbroj)";
+
 			if ($mysqli->query($sql)){
-			header("location: ../sustav/moranje.php");
+				$_SESSION['message'] = "Uspjesna registracija.";
+				header("location: ../sustav/moranje.php");
+			} else {
+				$_SESSION['message'] = $sql;
+				header("location: registracija.php");
 			}
-		}
+
+		
 
 	}
 
 }
 $_SESSION['korime'] = $korime;
+$_SESSION['uloga'] = $_POST['uloga'];
 ?>

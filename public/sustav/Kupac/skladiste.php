@@ -145,7 +145,8 @@ $result1 = mysqli_query($mysqli, $query1);
 			</div>
 			<div class="col-sm-7 ml-auto">
 				<div class="row">
-				<table class="table">
+				<input type="text" id="myInput" onkeyup="myFunction()" placeholder="pretraživanje po imenu..">
+				<table id="myTable" class="table">
   					<thead class="thead-inverse">
    						 <tr>
       						<th>#</th>
@@ -183,6 +184,31 @@ $result1 = mysqli_query($mysqli, $query1);
 			</div>
 		</div>
 	</div>
+
+	<script>
+		
+			function myFunction() {
+  				// Declare variables 
+ 			 var input, filter, table, tr, td, i;
+  				input = document.getElementById("myInput");
+  				filter = input.value.toUpperCase();
+  				table = document.getElementById("myTable");
+ 				 tr = table.getElementsByTagName("tr");
+
+  					// Loop through all table rows, and hide those who don't match the search query
+  				for (i = 0; i < tr.length; i++) {
+   					 td = tr[i].getElementsByTagName("td")[1];
+    				if (td) {
+     				 if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+       				 tr[i].style.display = "";
+     				 } else {
+      		  tr[i].style.display = "none";
+     		 }
+    		} 
+  			}
+		}
+		
+		</script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="../../../src/js/tether.min.js" type="text/javascript"></script>

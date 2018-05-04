@@ -2,6 +2,16 @@
 session_start();
 require 'db.php';
 
+
+if (isset($_POST["drop"])){
+	$_SESSION['id']= $_POST['id'];
+	$id= $_SESSION['id'];
+	$sql="DELETE FROM `artikal` WHERE `id_artikla`='$id'";
+	if ($mysqli->query($sql)){
+	header("location: profil.php");
+	}
+}
+
 // Ako su pokrenute sesije u mom profilu da ih vracanjem na skladiste ugasimo
 if(isset($_SESSION['zap'])) unset($_SESSION['zap']);
 if(isset($_SESSION['prod'])) unset($_SESSION['prod']);
@@ -49,7 +59,7 @@ $value2 = mysqli_fetch_array($result2);
 		    <ul class="navbar-nav ml-auto">	
 			<li class="nav-item-option nav-link navbar-toggler-center" style="border: 2px solid black; background-color: black;"><h2><?php echo $value2['ime_firme'] ?></h2></li>							
 	          <li class="nav-item option"><a class="nav-link navbar-toggler-left" href="moj_profil.php?query='1'">Moj profil</a></li>
-
+			  <li class="nav-item option"><a class="nav-link navbar-toggler-center" href="artikl.php">Dodaj Artikl</a></li>
 	          <li class="nav-item option"><a class="nav-link" href="../prijava/odjava.php">Odjava</a></li>
              </ul>
 		  </div>
@@ -104,13 +114,16 @@ $value2 = mysqli_fetch_array($result2);
 			</div>
 			<div class="col-sm-7 ml-auto">
 				<div class="row">
-				<table class="table">
+				<input type="text" id="myInput" onkeyup="myFunction()" placeholder="pretraživanje po imenu..">
+				<table id = "myTable"class="table">
   					<thead class="thead-inverse">
    						 <tr>
       						<th>#</th>
 	 						<th>Naziv</th>
 	  						<th>Cijena</th>
-      						<th>Neto kolicina</th>
+							  <th>Neto kolicina</th>
+							  <th></th>
+							  <th></th>
       						
 							
     					</tr>
@@ -120,13 +133,19 @@ $value2 = mysqli_fetch_array($result2);
 					  <?php while($artikal = mysqli_fetch_array($result1)):;?>	
 					 
             <tr>
-		
-                <td><?php echo $artikal['id_artikla'];?></td>
+				<form method="post" action="profil.php">
+                <td><input type="hidden" name="id" value="<?php echo $artikal['id_artikla'];?>"><?php echo $artikal['id_artikla'];?></td>
                 <td><?php echo $artikal['naziv'];?></td>
                 <td><?php echo $artikal['cijena'];?> KM</td>
 				<td><?php echo $artikal['neto_kolicina'];?> </td>
 				<td></td>
-            
+				<td><div class="btn">
+                       
+                            
+                            <input type="submit"  value="Brisanje" name="drop">
+                        
+                    </div></td>
+					</form>
 			<?php endwhile;?>			
 			
 								
@@ -143,6 +162,31 @@ $value2 = mysqli_fetch_array($result2);
 	document.getElementById('TN').style.display='hidden';
 	document.getElementById('subm1').style.display='block';
 	</script>
+
+<script>
+		
+			function myFunction() {
+  				// Declare variables 
+ 			 var input, filter, table, tr, td, i;
+  				input = document.getElementById("myInput");
+  				filter = input.value.toUpperCase();
+  				table = document.getElementById("myTable");
+ 				 tr = table.getElementsByTagName("tr");
+
+  					// Loop through all table rows, and hide those who don't match the search query
+  				for (i = 0; i < tr.length; i++) {
+   					 td = tr[i].getElementsByTagName("td")[1];
+    				if (td) {
+     				 if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+       				 tr[i].style.display = "";
+     				 } else {
+      		  tr[i].style.display = "none";
+     		 }
+    		} 
+  			}
+		}
+		
+		</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="../../src/js/tether.min.js" type="text/javascript"></script>
 	<script src="../../src/js/bootstrap.min.js" type="text/javascript"></script>

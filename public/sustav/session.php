@@ -21,7 +21,7 @@ require 'db.php';
 					$_SESSION['logged_in'] = true;
 				
 		if (isset($_SESSION['ime_firme'])&&isset($_SESSION['faks'])&&isset($_SESSION['adresa'])&&isset($_SESSION['grad'])&&isset($_SESSION['drzava'])&&isset($_SESSION['postanski_broj']))
-		{header('location: ../prijava/index.php'); // stranica za prodavaca
+		{header('location: ../prijava/prijava.php'); // stranica za prodavaca
 	
 		}
 		else
